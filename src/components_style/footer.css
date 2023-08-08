@@ -15,7 +15,8 @@
     position: fixed;
     width: 100%;
     bottom: 0;
-    background: #eee;
+    background: transparent;
+    color: white;
   }
   .f-icon {
     margin: 20px 10px;

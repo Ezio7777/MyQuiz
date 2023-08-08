@@ -1,5 +1,5 @@
 body{
-    background:white;
+    background-image: url("bg.jpg");
     background-blend-mode: multiply;
     background-position: center;
     background-size: cover;
