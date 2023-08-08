@@ -1,0 +1,28 @@
+
+  #footer-heading {
+    text-align: center;
+    font-size: 3.5rem;
+    font-family: "Ubuntu";
+    color: white;
+    font-weight: bolder;
+    margin-bottom: 20px;
+  }
+  .footer-button {
+    text-align: center;
+  }
+  #footer {
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: #eee;
+  }
+  .f-icon {
+    margin: 20px 10px;
+  }
+
+  p{
+    margin: 0;
+    padding: 1rem;
+  }
+  
