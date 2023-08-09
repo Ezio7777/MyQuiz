@@ -3,7 +3,7 @@ import "../components_style/home.css"
 
 const Home = () => {
   return (
-    <div className='container vh-100 '>
+    <div className='container vh-100  '>
         <div className='row vh-100 body_color'>
 
             {/* card1 */}

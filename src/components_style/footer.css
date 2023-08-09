@@ -17,6 +17,8 @@
     bottom: 0;
     background: transparent;
     color: white;
+    padding: 0;
+    margin: 16px;
   }
   .f-icon {
     margin: 20px 10px;
