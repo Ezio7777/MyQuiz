@@ -13,12 +13,7 @@ const Home = () => {
                         <i className="fa-solid fa-right-to-bracket  fa-5x card1_icon"></i>
                     </div>
                     <div className="card1footer">
-                        <button
-                            type="button"
-                            className="btn card1_btn btn-lg"
-                        >
-                            Join a Quizz
-                        </button>
+                    <button className='card_button'> Join a Quiz</button>
                     </div>
                 </div>
             </div>
@@ -30,12 +25,7 @@ const Home = () => {
                         <i className="fa-solid fa-ghost fa-5x card2_icon"></i>
                     </div>
                     <div className="card2footer">
-                        <button
-                            type="button"
-                            className="btn card2_btn btn-lg"
-                        >
-                            Host a Quizz
-                        </button>
+                        <button  className='card_button'> Host a Quiz</button>                                
                     </div>
                 </div>
             </div>

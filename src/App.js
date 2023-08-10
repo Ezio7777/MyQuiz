@@ -4,13 +4,14 @@ import Footer from "./components/footer.jsx"
 import Home from "./components/home.jsx"
 import Login from "./components/login.jsx"
 import Signup from "./components/signup"
+import Join_code from "./components/join_code.jsx";
 
 
 function App() {
   return (
     <div>
       <Navbar/>
-      <Signup/>
+      <Home/>
       <Footer/>
     </div>
   );
