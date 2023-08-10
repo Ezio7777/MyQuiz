@@ -6,7 +6,7 @@ const  footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <div className='footer-body'>
+
       <footer id="footer">
         {/* <div className="footer-icons">
           <i className="fa-brands fa-github f-icon"></i>
@@ -16,7 +16,6 @@ const  footer = () => {
         </div> */}
         <p>© Copyright {currentYear} beQuick</p>
       </footer>
-    </div>
   )
 }
 
