@@ -5,13 +5,14 @@ import Home from "./components/home.jsx"
 import Login from "./components/login.jsx"
 import Signup from "./components/signup"
 import Join_code from "./components/join_code.jsx";
+import Host_quiz from "./components/host_quiz"
 
 
 function App() {
   return (
     <div>
       <Navbar/>
-      <Home/>
+      <Host_quiz/>
       <Footer/>
     </div>
   );

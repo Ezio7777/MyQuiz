@@ -13,7 +13,7 @@ const  join_code = () => {
             <form>
                 <div className="user-box">
                     <input type="text" name="" required=""/>
-                    <label>Username</label>
+                    <label>Display Name</label>
                 </div>
                 <div className="user-box">
                     <input type="text" name="" required=""/>
