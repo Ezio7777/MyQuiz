@@ -15,11 +15,42 @@ const  host_quiz = () => {
                     <input type="text" name="" required=""/>
                     <label>Quizz Name</label>
                 </div>
-                <div className="user-box">
-                    <input type="text" name="" required=""/>
-                    <label>No of Questions</label>
-                </div><center>
-                <a href="#">
+                <div>
+                    <select className="form-select" id="validationDefault04" required>
+                        <option selected disabled value="">No. of quiz</option>
+                        <option>
+                            <p>5 Questions</p>
+                        </option>
+                        <option>
+                            <p>10 Questions</p>
+                        </option>
+                        <option>
+                            <p>15 Questions</p>
+                        </option>
+                        <option>
+                            <p>20 Questions</p>
+                        </option>
+                    </select>
+                </div>    
+                <div>
+                    <select className="form-select" id="validationDefault04" required>
+                        <option selected disabled value="">Time Duration</option>
+                        <option>
+                            <p>5 min</p>
+                        </option>
+                        <option>
+                            <p>10 min</p>
+                        </option>
+                        <option>
+                            <p>15 min</p>
+                        </option>
+                        <option>
+                            <p>20 min</p>
+                        </option>
+                    </select>
+                </div>    
+                <center>
+                    <a href="#">
                         Create
                     <span></span>
                 </a></center>

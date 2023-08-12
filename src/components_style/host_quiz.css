@@ -101,3 +101,24 @@
     background: linear-gradient(90deg, transparent, #03f40f);
     animation: btn-anim1 2s linear infinite;
   }
+
+
+ /* option-margin */
+
+ .form-select{
+    margin-bottom: 20px;
+
+ }
+
+
+  /* For Mobile */
+
+  @media(max-width: 768px){
+    .login-box{
+      width: 300px;
+    }
+
+    .form-select{
+      width: 200px;
+    }
+  }

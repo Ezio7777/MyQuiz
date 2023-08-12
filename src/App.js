@@ -6,13 +6,14 @@ import Login from "./components/login.jsx"
 import Signup from "./components/signup"
 import Join_code from "./components/join_code.jsx";
 import Host_quiz from "./components/host_quiz"
+import Share_code from "./components/share_code";
 
 
 function App() {
   return (
     <div>
       <Navbar/>
-      <Host_quiz/>
+      <Share_code/>
       <Footer/>
     </div>
   );
