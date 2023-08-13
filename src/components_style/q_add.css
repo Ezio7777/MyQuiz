@@ -1,0 +1,36 @@
+.q_add_body{
+    background: transparent;
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Question */
+
+.question{
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem;
+    height: 5rem;
+    background-color: #212121;
+    border: 2px solid rgb(141, 109, 255);
+    border-radius: 20px;
+}
+
+/* Answer */
+
+.ans{
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem;
+    background-color: #212121;
+    border: 2px solid rgb(141, 109, 255);
+    border-radius: 20px;
+}
+
+
+/* Animation */
+

@@ -7,13 +7,14 @@ import Signup from "./components/signup"
 import Join_code from "./components/join_code.jsx";
 import Host_quiz from "./components/host_quiz"
 import Share_code from "./components/share_code";
+import Q_add from "./components/q_add";
 
 
 function App() {
   return (
     <div>
       <Navbar/>
-      <Share_code/>
+      <Q_add/>
       <Footer/>
     </div>
   );

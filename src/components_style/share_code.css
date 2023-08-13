@@ -28,6 +28,7 @@
     color:white ;
     background: transparent;
     backdrop-filter: blur(2px);
+    font-size: small;
 }
 
 @media(max-width: 768px){
