@@ -4,7 +4,7 @@ import "../components_style/signup.css"
 const  signup = () => {
 
   return (
-    <div className='container vh-100 whole-body'>
+    <div className='container whole-body'>
         <div className="form-container">
             <p className="title">SignUp</p>
             <form className="form">

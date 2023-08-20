@@ -3,8 +3,8 @@ import "../components_style/home.css"
 
 const Home = () => {
   return (
-    <div className='container vh-100  '>
-        <div className='row vh-100 body_color'>
+    <div className='container'>
+        <div className='row  body_color'>
 
             {/* card1 */}
             <div className='col-lg-6 col-md-6 col-sm-12 card-center container-fluid'>

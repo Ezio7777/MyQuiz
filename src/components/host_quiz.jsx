@@ -7,13 +7,13 @@ const  host_quiz = () => {
 
   return (
 
-    <div className='container vh-100 join_code_body' >
+    <div className='container host_quiz_body' >
         <div className="login-box">
 
             <form>
                 <div className="user-box">
                     <input type="text" name="" required=""/>
-                    <label>Quizz Name</label>
+                    <label className='Quizz_Name_font'>Quizz Name</label>
                 </div>
                 <div>
                     <select className="form-select" id="validationDefault04" required>

@@ -1,69 +1,62 @@
-.copy_box_body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+.copy_box_body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
 }
-.box_body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.box_body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
-
-
-
 
 /* code-box */
 
-.code-box{
-    width: 400px;
-    border-radius: 20px;
-    background: #eee;
-    margin-right: 7px;
-    text-align: center;
+.code-box {
+  width: 400px;
+  border-radius: 20px;
+  background: #eee;
+  margin-right: 7px;
+  text-align: center;
+  padding: 10px;
 }
-.details p{
-    color:white ;
-    background: transparent;
-    backdrop-filter: blur(2px);
-    font-size: small;
-}
-
-@media(max-width: 768px){
-    .code-box{
-        width: 300px;
-    }
+.details p {
+  color: white;
+  background: transparent;
+  backdrop-filter: blur(2px);
+  font-size: small;
+  margin-top: 5px;
 }
 
-
-
-
-
+@media (max-width: 768px) {
+  .code-box {
+    width: 300px;
+  }
+}
 
 /* Copy-Button */
 
-
 .button-copy {
-    padding: 0.8em 1.8em;
-    border: 2px solid #7b42ff;
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    background: transparent;
-    backdrop-filter: blur(30px);
-    text-align: center;
-    font-size: 16px;
-    transition: .3s;
-    z-index: 1;
-    font-family: inherit;
-    color: white;
-    margin: 20px 0;
-    margin-bottom: 11rem;
-   }
-   
-   /* .button-copy::before {
+  padding: 0.8em 1.8em;
+  border: 2px solid #7b42ff;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  backdrop-filter: blur(30px);
+  text-align: center;
+  font-size: 16px;
+  transition: 0.3s;
+  z-index: 1;
+  font-family: inherit;
+  color: white;
+  margin: 20px 0;
+  margin-bottom: 11rem;
+}
+
+/* .button-copy::before {
     content: '';
     width: 0;
     height: 300%;
@@ -76,14 +69,12 @@
     display: block;
     z-index: -1;
    } */
-   
-   .button-copy:hover::before {
-    width: 105%;
-   }
-   
-   .button-copy:hover {
-    background-color: #7b42ff;
-    color: white;
-   }
 
-   
+.button-copy:hover::before {
+  width: 105%;
+}
+
+.button-copy:hover {
+  background-color: #7b42ff;
+  color: white;
+}

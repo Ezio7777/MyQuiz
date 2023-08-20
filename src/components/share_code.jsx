@@ -3,7 +3,7 @@ import "../components_style/share_code.css"
 
 function share_code() {
   return (
-    <div className='container vh-100 copy_box_body'>
+    <div className='container copy_box_body'>
       
       <div className='box_body row'>
         <div className='code-box col-lg-12'>

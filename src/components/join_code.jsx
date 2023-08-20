@@ -7,7 +7,7 @@ const  join_code = () => {
 
   return (
 
-    <div className='container vh-100 join_code_body' >
+    <div className='container join_code_body' >
         <div className="login-box">
 
             <form>

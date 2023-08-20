@@ -4,7 +4,7 @@ import "../components_style/login.css"
 const  login = () => {
 
   return (
-    <div className='container vh-100 whole-body'>
+    <div className='container  whole-body-login'>
         <div className="form-container">
             <p className="title">Login</p>
             <form className="form">

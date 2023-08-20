@@ -9,12 +9,14 @@ import Host_quiz from "./components/host_quiz"
 import Share_code from "./components/share_code";
 import Q_add from "./components/q_add";
 
+import "./App.css"
+
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Navbar/>
-      <Q_add/>
+      <Host_quiz/>
       <Footer/>
     </div>
   );
