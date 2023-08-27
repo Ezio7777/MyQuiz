@@ -9,7 +9,7 @@ import Host_quiz from "./components/host_quiz";
 import Share_code from "./components/share_code";
 import Q_add from "./components/q_add";
 import Contact_us from "./components/contact_us";
-import About from "./components/about"
+import About from "./components/about";
 
 import "./App.css";
 
@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <Navbar />
       <About />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

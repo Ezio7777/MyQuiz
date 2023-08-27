@@ -9,14 +9,18 @@
 /* -----------icons---------- */
 
 .footer-icons {
+  width: 400px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  background-color: rgba(17, 24, 39, 1);
+  border-radius: 20px;
 }
 
 .footer-icons a {
-  color: rgba(167, 139, 250, 1);
+  color: rgb(143, 106, 255);
   margin: 0 15px;
   font-size: 24px;
   transition: color 0.3s;
@@ -159,7 +163,10 @@
 /* Responsive for mobile */
 
 @media (max-width: 768px) {
-  .code-box {
+  .form-container {
+    width: 300px;
+  }
+  .footer-icons {
     width: 300px;
   }
 }

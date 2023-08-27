@@ -1,27 +1,33 @@
-import React from 'react'
-import "../components_style/login.css"
+import React from "react";
+import "../components_style/login.css";
 
-const  login = () => {
-
+const login = () => {
   return (
-    <div className='container  whole-body-login'>
-        <div className="form-container">
-            <p className="title">Login</p>
-            <form className="form">
-                <div className="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" placeholder=""/>
-                </div>
-                <div className="input-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder=""/>
-                    <div className="forgot">
-                        <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
-                    </div>
-                </div>
-                <button className="sign">Sign in</button>
-            </form>
-            {/* <div className="social-message">
+    <div className="container  whole-body-login">
+      <div className="form-container">
+        <p className="title">Login</p>
+        <form className="form">
+          <div className="input-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="" />
+          </div>
+          <div className="input-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder=""
+            />
+            <div className="forgot">
+              <a rel="noopener noreferrer" href="#">
+                Forgot Password ?
+              </a>
+            </div>
+          </div>
+          <button className="sign">Sign in</button>
+        </form>
+        {/* <div className="social-message">
                 <div className="line"></div>
                 <p className="message">Login with social accounts</p>
                 <div className="line"></div>
@@ -43,12 +49,16 @@ const  login = () => {
                     </svg>
                 </button>
             </div> */}
-            <p className="signup">Don't have an account?
-                <a rel="noopener noreferrer" href="#" class=""> Sign up</a>
-            </p>
-        </div>
+        <p className="signup">
+          Don't have an account?
+          <a rel="noopener noreferrer" href="#" class="">
+            {" "}
+            Sign up
+          </a>
+        </p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default login
+export default login;
