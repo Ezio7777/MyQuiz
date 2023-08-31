@@ -22,8 +22,6 @@
   user-select: none;
   font-weight: bolder;
   color: black;
-
-  margin-top: 10rem;
 }
 
 .card:hover {
@@ -44,17 +42,13 @@
 
 /* Card-1 */
 
-.card1 {
-  margin-left: 7rem;
-}
-
 .card1_icon {
   color: white;
 }
 
 .card1footer {
-  margin-top: 60px;
   padding: auto;
+  margin-top: 50px;
 }
 
 /* .card1_btn{
@@ -72,17 +66,13 @@
 
 /* Card-2 */
 
-.card2 {
-  margin-right: 7rem;
-}
-
 .card2_icon {
   color: white;
 }
 
 .card2footer {
   padding: auto;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 /* 

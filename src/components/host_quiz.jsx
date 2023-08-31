@@ -1,9 +1,8 @@
 import React from "react";
 import "../components_style/host_quiz.css";
+import { Link } from "react-router-dom";
 
 const host_quiz = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <div className="container host_quiz_body">
       <div className="login-box">
@@ -51,10 +50,10 @@ const host_quiz = () => {
             </select>
           </div>
           <center>
-            <a href="#">
+            <Link to="/question_add">
               Create
               <span></span>
-            </a>
+            </Link>
           </center>
         </form>
       </div>

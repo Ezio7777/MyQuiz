@@ -4,11 +4,28 @@
   border-radius: 50px;
 }
 
+/* Set images */
+
+.vedi {
+  background-image: url("");
+  background-size: contain;
+}
+.sunit {
+  background-image: url("../images/SP.jpeg");
+  background-size: contain;
+}
+.soumya {
+  background-image: url("");
+  background-size: contain;
+}
+
+/* All cards */
+
 .card5 {
   box-sizing: border-box;
   width: 300px;
   height: 300px;
-  background: transparent;
+
   border: 2px solid #b393ff;
 
   /* box-shadow: 0px 0px 30px 1px rgba(158, 1, 255, 0.3); */
@@ -23,7 +40,6 @@
   user-select: none;
   font-weight: bolder;
   color: black;
-  margin-bottom: 50px;
 }
 
 .card:hover {
@@ -70,8 +86,9 @@
 }
 
 /* img in card */
-.vedi-img {
+.about-card-img {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -79,7 +96,9 @@
 /* text on card */
 .text1 {
   color: white;
-  padding-top: 205px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 @media (max-width: 1000px) {

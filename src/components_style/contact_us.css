@@ -156,10 +156,6 @@
   color: rgba(156, 163, 175, 1);
 }
 
-#password {
-  height: 100px;
-}
-
 /* Responsive for mobile */
 
 @media (max-width: 768px) {

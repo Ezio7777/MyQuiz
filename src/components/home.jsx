@@ -1,5 +1,6 @@
 import React from "react";
 import "../components_style/home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -12,7 +13,10 @@ const Home = () => {
               <i className="fa-solid fa-right-to-bracket  fa-5x card1_icon"></i>
             </div>
             <div className="card1footer">
-              <button className="card_button"> Join a Quiz</button>
+              <Link className="card_button" to="/join">
+                {" "}
+                Join a Quiz
+              </Link>
             </div>
           </div>
         </div>
@@ -24,7 +28,10 @@ const Home = () => {
               <i className="fa-solid fa-ghost fa-5x card2_icon"></i>
             </div>
             <div className="card2footer">
-              <button className="card_button"> Host a Quiz</button>
+              <Link className="card_button" to="/host">
+                {" "}
+                Host a Quiz
+              </Link>
             </div>
           </div>
         </div>

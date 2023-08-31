@@ -13,13 +13,108 @@ import About from "./components/about";
 
 import "./App.css";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Routes,
+} from "react-router-dom";
+
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <About />
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar />
+              <Home />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <>
+              <Navbar />
+              <About />
+            </>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <>
+              <Navbar />
+              <Contact_us />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <>
+              <Navbar />
+              <Signup />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <>
+              <Navbar />
+              <Login />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/join"
+          element={
+            <>
+              <Navbar />
+              <Join_code />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/host"
+          element={
+            <>
+              <Navbar />
+              <Host_quiz />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/question_add"
+          element={
+            <>
+              <Navbar />
+              <Q_add />
+            </>
+          }
+        />
+        <Route
+          path="/share_code"
+          element={
+            <>
+              <Navbar />
+              <Share_code />
+              <Footer />
+            </>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 

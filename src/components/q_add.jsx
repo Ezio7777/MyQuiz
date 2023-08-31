@@ -1,5 +1,6 @@
 import React from "react";
 import "../components_style/q_add.css";
+import { Link } from "react-router-dom";
 
 function q_add() {
   return (
@@ -74,9 +75,19 @@ function q_add() {
 
       {/* Changing Section */}
       <div className="chanaging_section">
-        <div className="btn">Pre</div>
-        <div className="btn">Next</div>
-        <div className="btn">Done</div>
+        <div className="pre-next-cont">
+          <div className="btn prev-btn">
+            <i class="fa-solid fa-chevron-left"></i> Prev
+          </div>
+          <div className="btn next-btn">
+            Next <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+        <div className="done-cont">
+          <Link className="done-btn btn btn-success" to="/share_code">
+            <i class="fa-regular fa-circle-check"></i> Done
+          </Link>
+        </div>
       </div>
     </div>
   );

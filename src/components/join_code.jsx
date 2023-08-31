@@ -2,8 +2,6 @@ import React from "react";
 import "../components_style/join_code.css";
 
 const join_code = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <div className="container join_code_body">
       <div className="login-box">

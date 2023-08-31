@@ -1,5 +1,6 @@
 import React from "react";
 import "../components_style/navbar.css";
+import { Link } from "react-router-dom";
 
 function navbar() {
   return (
@@ -7,9 +8,9 @@ function navbar() {
       <nav class="navbar navbar-expand-lg navbar-dark navbar_bg">
         <div class="container">
           {/* Logo */}
-          <a class="navbar-brand" href="#">
+          <Link class="navbar-brand" to="/">
             beQuick
-          </a>
+          </Link>
 
           {/* Toggle-Btn */}
           <button
@@ -47,38 +48,38 @@ function navbar() {
             <div class="offcanvas-body d-flex flex-column p-4 flex-lg-row p-lg-0">
               <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3 menu">
                 <li class="nav-item mx-2">
-                  <a
+                  <Link
                     class="nav-link active navhome"
                     aria-current="page"
-                    href="#"
+                    to="/"
                   >
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li class="nav-item mx-2">
-                  <a class="nav-link" href="#">
+                  <Link class="nav-link" to="/about">
                     About
-                  </a>
+                  </Link>
                 </li>
                 <li class="nav-item mx-2">
-                  <a class="nav-link" href="#">
+                  <Link class="nav-link" to="/contact">
                     Contact Us
-                  </a>
+                  </Link>
                 </li>
               </ul>
 
               {/* Login & Sign Up */}
               <div className=" d-flex flex-column flex-lg-row p-4 justify-content-center align-items-center gap-3 ">
-                <a class="text-white" href="#">
+                <Link class="text-white" to="/Login">
                   Login
-                </a>
-                <a
+                </Link>
+                <Link
                   class="text-white text-decoration-none px-3 py-1 rounded-4"
                   id="signup"
-                  href="#"
+                  to="/signup"
                 >
                   Sign Up
-                </a>
+                </Link>
               </div>
             </div>
           </div>

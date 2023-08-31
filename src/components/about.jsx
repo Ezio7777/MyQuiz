@@ -20,28 +20,25 @@ const about = () => {
       <div className="h2">Team Members</div>
       {/* cards */}
       <div className="row about-img">
-        <div className="col-lg-4 col-md-6 col-sm-12 vedi-img">
-          <div className="card5">
-            <p class="text1">
-              Name : Vedi Gupta <br /> Enroll No. : 211B343
-            </p>
-          </div>
+        <div className="col-lg-4 col-md-6 col-sm-12 about-card-img">
+          <div className="card5 vedi"></div>
+          <p class="text1">
+            Name : Vedi Gupta <br /> Enroll No. : 211B343
+          </p>
         </div>
 
-        <div className="col-lg-4 col-md-6 col-sm-12 vedi-img">
-          <div className="card5">
-            <p class="text1">
-              Name : Sunit Pal <br /> Enroll No. : 211B384
-            </p>
-          </div>
+        <div className="col-lg-4 col-md-6 col-sm-12 about-card-img">
+          <div className="card5 sunit"></div>
+          <p class="text1">
+            Name : Sunit Pal <br /> Enroll No. : 211B384
+          </p>
         </div>
 
-        <div className="col-lg-4 col-md-6 col-sm-12 vedi-img">
-          <div className="card5">
-            <p class="text1">
-              Name : Soumya Gupta <br /> Enroll No. : 211B317
-            </p>
-          </div>
+        <div className="col-lg-4 col-md-6 col-sm-12 about-card-img">
+          <div className="card5 soumya"></div>
+          <p class="text1">
+            Name : Soumya Gupta <br /> Enroll No. : 211B317
+          </p>
         </div>
       </div>
     </div>
