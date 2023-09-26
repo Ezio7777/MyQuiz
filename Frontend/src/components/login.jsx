@@ -1,18 +1,15 @@
 import React from "react";
-import "../components_style/signup.css";
+import "../components_style/login.css";
+import { Link } from "react-router-dom";
 
-const signup = () => {
+const login = () => {
   return (
-    <div className="container whole-body">
+    <div className="container  whole-body-login">
       <div className="form-container">
-        <p className="title">SignUp</p>
+        <p className="title">Login</p>
         <form className="form">
           <div className="input-group">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="" />
-          </div>
-          <div className="input-group">
-            <label for="email">Email</label>
             <input type="text" name="username" id="username" placeholder="" />
           </div>
           <div className="input-group">
@@ -23,17 +20,13 @@ const signup = () => {
               id="password"
               placeholder=""
             />
+            <div className="forgot">
+              <a rel="noopener noreferrer" href="#">
+                Forgot Password ?
+              </a>
+            </div>
           </div>
-          <div className="input-group">
-            <label for="password">Confirm Password</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder=""
-            />
-          </div>
-          <button className="sign">SignUp</button>
+          <button className="sign">Sign in</button>
         </form>
         {/* <div className="social-message">
                 <div className="line"></div>
@@ -58,15 +51,15 @@ const signup = () => {
                 </button>
             </div> */}
         <p className="signup">
-          Already have an account?
-          <a rel="noopener noreferrer" href="#" class="">
+          Don't have an account?
+          <Link rel="noopener noreferrer" to="/signup" class="">
             {" "}
-            Log in
-          </a>
+            Sign up
+          </Link>
         </p>
       </div>
     </div>
   );
 };
 
-export default signup;
+export default login;

@@ -1,0 +1,27 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar_bg {
+  background: transparent;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  margin-right: 9rem;
+}
+
+.profile_base {
+  margin-right: 20px;
+  margin-left: 200px;
+}
+
+.profile_icon {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .profile_base {
+    margin: 0;
+  }
+}

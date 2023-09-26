@@ -48,11 +48,7 @@ function navbar() {
             <div class="offcanvas-body d-flex flex-column p-4 flex-lg-row p-lg-0">
               <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3 menu">
                 <li class="nav-item mx-2">
-                  <Link
-                    class="nav-link active navhome"
-                    aria-current="page"
-                    to="/"
-                  >
+                  <Link class="nav-link" aria-current="page" to="/">
                     Home
                   </Link>
                 </li>

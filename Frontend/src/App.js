@@ -10,6 +10,7 @@ import Share_code from "./components/share_code";
 import Q_add from "./components/q_add";
 import Contact_us from "./components/contact_us";
 import About from "./components/about";
+import Navbar_after from "./components/navbar_after";
 
 import "./App.css";
 
