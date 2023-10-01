@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const UserSchema = new Schema({
-  name: {
+const TeacherSchema = new Schema({
+  quiz_name: {
+    type: String,
+    required: true,
+  },
+  pin: {
     type: String,
     required: true,
   },
@@ -21,4 +25,4 @@ const UserSchema = new Schema({
   },
 });
 const User = mongoose.model("user", UserSchema);
-module.exports = User;
+module.exports = Teacher;
