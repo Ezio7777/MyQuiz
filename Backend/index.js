@@ -5,11 +5,14 @@ const cors = require("cors");
 connectToMongo();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
-const port = 3000;
+const port = 5000;
 
 //Routes
 app.use("/api/auth", require("./routes/auth"));
+
+// app.use("/api/host", require("./routes/host"));
 
 //Listen
 app.listen(port, () => {

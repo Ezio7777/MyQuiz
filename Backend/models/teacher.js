@@ -2,20 +2,17 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const TeacherSchema = new Schema({
-  quiz_name: {
-    type: String,
-    required: true,
-  },
-  pin: {
-    type: String,
-    required: true,
-  },
-  email: {
+  quiz_id: {
     type: String,
     required: true,
     unique: true,
   },
-  password: {
+  creator_id: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  quiz_name: {
     type: String,
     required: true,
   },
@@ -23,6 +20,18 @@ const TeacherSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  no_of_question: {
+    type: Number,
+    required: true,
+  },
+  duration: {
+    type: Number,
+    required: true,
+  },
+  questions: {
+    type: Array,
+    required: true,
+  },
 });
-const User = mongoose.model("user", UserSchema);
+const Teacher = mongoose.model("teacher", TeacherSchema);
 module.exports = Teacher;

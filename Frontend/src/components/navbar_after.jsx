@@ -70,34 +70,14 @@ function navbar() {
               </ul>
 
               {/* Profile */}
-              <div className=" d-flex flex-column flex-lg-row p-4 justify-content-center align-items-center gap-3 profile_base">
-                <div class="dropdown-center">
-                  <button
-                    class="btn dropdown-toggle"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fa-solid fa-bars fa-xl profile_icon"></i>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        Action
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        Action two
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        Action three
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+              <div className=" d-flex flex-column flex-lg-row p-4 justify-content-center align-items-center gap-3 ">
+                <Link
+                  class="text-white text-decoration-none px-3 py-1 rounded-4"
+                  id="signup"
+                  to="/signup"
+                >
+                  Log Out <i class="fa-solid fa-right-from-bracket"></i>
+                </Link>
               </div>
             </div>
           </div>
