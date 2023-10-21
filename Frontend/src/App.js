@@ -10,7 +10,8 @@ import Share_code from "./components/share_code";
 import Q_add from "./components/q_add";
 import Contact_us from "./components/contact_us";
 import About from "./components/about";
-import Navbar_after from "./components/navbar_after";
+import Navbar_timer from "./components/navbar_timer";
+import Q_show from "./components/q_show";
 
 import "./App.css";
 
@@ -111,6 +112,16 @@ function App() {
               <Navbar />
               <Share_code />
               <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/q_show"
+          element={
+            <>
+              <Navbar_timer />
+              <Q_show />
+              <Q_show />
             </>
           }
         />

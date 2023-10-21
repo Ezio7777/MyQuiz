@@ -1,5 +1,6 @@
 import React from "react";
 import "../components_style/join_code.css";
+import { Link } from "react-router-dom";
 
 const join_code = () => {
   return (
@@ -15,10 +16,10 @@ const join_code = () => {
             <label>Join Code</label>
           </div>
           <center>
-            <a href="#">
+            <Link to="/q_show">
               Join
               <span></span>
-            </a>
+            </Link>
           </center>
         </form>
       </div>

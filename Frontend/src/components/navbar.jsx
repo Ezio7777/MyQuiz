@@ -99,7 +99,7 @@ function navbar() {
             <nav class="navbar navbar-expand-lg navbar-dark navbar_bg">
               <div class="container">
                 {/* Logo */}
-                <Link class="navbar-brand" to="/">
+                <Link class="navbar-brand simple_home_brand" to="/">
                   beQuick
                 </Link>
 
@@ -150,7 +150,7 @@ function navbar() {
                       </li>
                       <li class="nav-item mx-2">
                         <Link class="nav-link" to="/contact">
-                          Contact Us
+                          Contact
                         </Link>
                       </li>
                     </ul>
