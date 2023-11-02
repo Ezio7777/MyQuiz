@@ -1,3 +1,4 @@
+const { bool, boolean } = require("joi");
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
@@ -8,9 +9,9 @@ const TeacherSchema = new Schema({
     unique: true,
   },
   creator_id: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
     required: true,
-    unique: true,
   },
   quiz_name: {
     type: String,
@@ -29,7 +30,15 @@ const TeacherSchema = new Schema({
     required: true,
   },
   questions: {
-    type: Array,
+    type: [],
+    required: true,
+  },
+  expiry: {
+    type: Date,
+    required: true,
+  },
+  publish: {
+    type: Boolean,
     required: true,
   },
 });

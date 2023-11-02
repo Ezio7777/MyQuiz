@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "../components_style/host_quiz.css";
 import { Link } from "react-router-dom";
 
 const host_quiz = () => {
-  let token = localStorage.getItem("token");
+  // let token = localStorage.getItem("token");
+  // const [quizName, setQuizName] = useState("");
+  // const [noOfQuestion, setNoOfQuestion] = useState("");
 
   return (
     <div className="container host_quiz_body">
@@ -14,8 +16,8 @@ const host_quiz = () => {
             <label className="Quizz_Name_font">Quizz Name</label>
           </div>
           <div className="user-box">
-            <input type="text" name="" required="" />
-            <label className="Quizz_Name_font" placeholder="0">
+            <input type="text" name="" required="" placeholder="0" />
+            <label className="Quizz_Name_font">
               No of questions (less than 20)
             </label>
           </div>

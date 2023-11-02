@@ -12,7 +12,9 @@ const port = 5000;
 //Routes
 app.use("/api/auth", require("./routes/auth"));
 
-// app.use("/api/host", require("./routes/host"));
+app.use("/api/host", require("./routes/host"));
+
+app.use("/api/join", require("./routes/join"));
 
 //Listen
 app.listen(port, () => {
