@@ -1,0 +1,60 @@
+.dashboard-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+   
+  }
+  
+  .option-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .option {
+    margin: 10px;
+    padding: 10px 20px;
+    border: 1px solid white;
+    cursor: pointer;
+    color: white;
+
+  }
+  
+  .selected {
+    color: black;
+    background-color:rgba(167, 139, 250, 1);
+  }
+  
+  .info-section {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    
+  }
+  
+  .join-info, .host-info {
+    display: flex;
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .column {
+    margin: 0 9%;
+  }
+  
+  .info-title {
+    font-weight: bolder;
+    color:rgb(44, 23, 106);
+    text-decoration: underline;
+  }
+  
+  .info-detail {
+    margin-top: 5px;
+    color: rgb(113, 83, 202)
+    
+  }
