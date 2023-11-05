@@ -4,14 +4,15 @@ import Footer from "./components/footer.jsx";
 import Home from "./components/home.jsx";
 import Login from "./components/login.jsx";
 import Signup from "./components/signup";
-import Join_code from "./components/join_code.jsx";
-import Host_quiz from "./components/host_quiz";
-import Share_code from "./components/share_code";
-import Q_add from "./components/q_add";
-import Contact_us from "./components/contact_us";
+import JoinCode from "./components/JoinCodeE.jsx";
+import HostQuiz from "./components/host_quiz";
+import ShareCode from "./components/share_code";
+import QAdd from "./components/q_add";
+import ContactUs from "./components/contact_us";
 import About from "./components/about";
-import Navbar_timer from "./components/navbar_timer";
-import Q_show from "./components/q_show";
+import NavbarTimer from "./components/navbar_timer";
+import QShow from "./components/q_show";
+import Dashboard from "./components/dashboard.jsx";
 
 import "./App.css";
 
@@ -51,7 +52,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <Contact_us />
+              <ContactUs />
               <Footer />
             </>
           }
@@ -81,7 +82,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <Join_code />
+              <JoinCode />
               <Footer />
             </>
           }
@@ -91,7 +92,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <Host_quiz />
+              <HostQuiz />
               <Footer />
             </>
           }
@@ -101,7 +102,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <Q_add />
+              <QAdd />
             </>
           }
         />
@@ -110,7 +111,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <Share_code />
+              <ShareCode />
               <Footer />
             </>
           }
@@ -119,9 +120,18 @@ function App() {
           path="/q_show"
           element={
             <>
-              <Navbar_timer />
-              <Q_show />
-              <Q_show />
+              <NavbarTimer />
+              <QShow />
+              <QShow />
+            </>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <>
+              <Navbar />
+              <Dashboard />
             </>
           }
         />

@@ -15,13 +15,13 @@ const Dashboard = () => {
           className={`option ${selectedOption === "join" ? "selected" : ""}`}
           onClick={() => handleOptionChange("join")}
         >
-          Join
+          Total Quiz Attempt
         </div>
         <div
           className={`option ${selectedOption === "host" ? "selected" : ""}`}
           onClick={() => handleOptionChange("host")}
         >
-          Host
+          Total Quiz Host
         </div>
       </div>
 

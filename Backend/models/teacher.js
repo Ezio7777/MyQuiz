@@ -33,10 +33,10 @@ const TeacherSchema = new Schema({
     type: [],
     required: true,
   },
-  expiry: {
-    type: Date,
-    required: true,
-  },
+  // expiry: {
+  //   type: Date,
+  //   required: true,
+  // },
   publish: {
     type: Boolean,
     required: true,

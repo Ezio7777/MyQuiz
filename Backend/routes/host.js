@@ -33,29 +33,28 @@ Router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ success, errors: errors.array() });
     }
-    res.send("hi");
+
+    try {
+      await QuizCounter.updateOne(
+        { _id: "6547ba752a935f3835211124" },
+        {
+          $inc: { value: 1 },
+          $currentDate: { lastModified: true },
+        }
+      );
+      let counter = await QuizCounter.findById("6547ba752a935f3835211124");
+      const quizObj = {
+        ...req.body,
+        quiz_id: counter.value,
+        creator_id: req.user.id,
+      };
+      quiz = await teacher.create(quizObj);
+      res.json({ quiz });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Internal server error");
+    }
   }
-  //   try {
-  //     await QuizCounter.updateOne(
-  //       { _id: "653a2d4b8741a53ec501ef42" },
-  //       {
-  //         $inc: { value: 1 },
-  //         $currentDate: { lastModified: true },
-  //       }
-  //     );
-  //     let counter = await QuizCounter.findById("653a2d4b8741a53ec501ef42");
-  //     const quizObj = {
-  //       ...req.body,
-  //       quiz_id: counter.value,
-  //       creator_id: req.user.id,
-  //     };
-  //     quiz = await teacher.create(quizObj);
-  //     res.json({ quiz });
-  //   } catch (error) {
-  //     console.error(error.message);
-  //     res.status(500).send("Internal server error");
-  //   }
-  // }
 );
 
 module.exports = Router;

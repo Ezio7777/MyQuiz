@@ -1,0 +1,101 @@
+.aboutbody {
+  background: transparent;
+  height: 80vh;
+  text-align: center;
+  backdrop-filter: blur(30px);
+}
+
+/* caption of leader board */
+.h1_text {
+  font-size: 3.4rem;
+  line-height: 7rem;
+  font-weight: 800;
+  color: white;
+}
+
+/* flexbox table */
+.flex_board {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color:purple;
+  backdrop-filter: blur(30px);
+  border-radius: 20px;
+  color: white;
+  
+}
+
+.board{
+  
+}
+
+.boxes{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details{
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  /* justify-content: space-between; */
+  background-color: white;
+}
+
+.el-1{
+  margin-left: 20px;
+  margin-right: 200px;
+}
+
+.el-2{
+  margin-right: 200px;
+}
+
+.el-3{
+  margin-right: 200px;
+}
+
+.el-4{
+  margin-right: 20px;
+}
+
+@media (max-width: 1000px) {
+
+  .h1_text {
+    font-size: 2rem;
+    line-height: 7rem;
+    font-weight: 800;
+    color: white;
+  }
+
+  .el-1{
+    margin-left: 20px;
+    margin-right: 100px;
+  }
+  .el-2{
+    margin-right: 100px;
+  }
+  
+  .el-3{
+    margin-right: 100px;
+  }
+}
+@media (max-width: 500px) {
+  .el-1{
+    margin-left: 20px;
+    margin-right: 40px;
+  }
+  .el-2{
+    margin-right: 40px;
+  }
+  
+  .el-3{
+    margin-right: 40px;
+  }
+}
+

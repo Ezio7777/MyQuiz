@@ -25,12 +25,12 @@ const Home = () => {
         <div className="col-lg-6 col-md-6 col-sm-12 card-center">
           <div className="card card2">
             <div className="card2_logo ">
-              <i className="fa-solid fa-ghost fa-5x card2_icon"></i>
+              <i class="fa-solid fa-circle-plus fa-5x card2_icon"></i>
             </div>
             <div className="card2footer">
               <Link className="card_button" to="/host">
                 {" "}
-                Host a Quiz
+                Create a Quiz
               </Link>
             </div>
           </div>

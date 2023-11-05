@@ -17,7 +17,7 @@ function navbar() {
               <div class="container">
                 {/* Logo */}
                 <Link class="navbar-brand" to="/">
-                  beQuick
+                  MyQuiz
                 </Link>
 
                 {/* Toggle-Btn */}
@@ -71,7 +71,7 @@ function navbar() {
                         </Link>
                       </li>
                       <li class="nav-item mx-2">
-                        <Link class="nav-link" to="/contact">
+                        <Link class="nav-link" to="/dashboard">
                           Dashboard
                         </Link>
                       </li>
@@ -100,7 +100,7 @@ function navbar() {
               <div class="container">
                 {/* Logo */}
                 <Link class="navbar-brand simple_home_brand" to="/">
-                  beQuick
+                  MyQuiz
                 </Link>
 
                 {/* Toggle-Btn */}
