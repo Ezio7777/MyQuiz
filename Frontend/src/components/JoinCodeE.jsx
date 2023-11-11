@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../components_style/join_code.css";
-import { Link } from "react-router-dom";
-import QShow from "./q_show";
+import { Link, useNavigate } from "react-router-dom";
+// import QShow from "./q_show";
 
 const JoinCode = ({ loadUser, onRouteChange }) => {
   // let token = localStorage.getItem("token");
@@ -12,9 +12,6 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
   const [errJoinCode, setErrjoinCode] = useState(false);
 
   function joinHandle(e) {
-    if (displayName.length > 3 || /^\d{6,6}$/.test(JoinCode)) {
-      alert("Enter Correct Values");
-    }
     e.preventDefault();
   }
 
@@ -38,19 +35,27 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
     setjoinCode(code);
   };
 
+  const navigate = useNavigate();
+
   const onSubmitJoin = async () => {
-    const response = await fetch(
-      `http://localhost:5000/api/join/joinquiz/${joinCode}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("auth-token"),
-        },
-      }
-    );
-    const json = response.json();
-    console.log(json);
+    if (displayName.length > 3 && !/^\d{6,6}$/.test(JoinCode)) {
+      const response = await fetch(
+        `http://localhost:5000/api/join/joinquiz/${joinCode}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+        }
+      );
+      const json = await response.json();
+      console.log(json);
+      const data = "hi";
+      navigate(`./q_show`, { state: { json } });
+    } else {
+      alert("Enter Correct Values");
+    }
   };
 
   return (
@@ -98,11 +103,8 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
             )}
           </div>
           <div className="join_btn">
-            <button onClick={onSubmitJoin}>
-              <Link to="/q_show">
-                Join
-                <span></span>
-              </Link>
+            <button onClick={onSubmitJoin} className="join_btn_in">
+              Join
             </button>
           </div>
         </form>

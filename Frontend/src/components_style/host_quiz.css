@@ -72,6 +72,20 @@
   display: block;
 }
 
+.host_btn {
+  text-align: center;
+  color: white;
+}
+
+.host_btn_in {
+  font-size: 1.7rem;
+  width: 150px;
+  border-radius: 20px;
+}
+.host_btn_in:hover {
+  background: #03f40f;
+}
+
 /* option-margin */
 
 .form-select {

@@ -98,4 +98,13 @@
 
 .join_btn {
   text-align: center;
+  color: white;
+}
+.join_btn_in {
+  font-size: 1.7rem;
+  width: 100px;
+  border-radius: 20px;
+}
+.join_btn_in:hover {
+  background: #03f40f;
 }

@@ -1,50 +1,43 @@
 import React from "react";
+// import { useParams } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import "../components_style/q_show.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import NavbarTimer from "./q_show_nav";
+import Q_show_body from "./q_show_body";
 
-function q_show(props) {
+function Q_show() {
+  let dummy = {
+    _id: "6547be9ab63f5b86debf61a0",
+    quiz_name: "APS-lab",
+    no_of_question: 2,
+    duration: 1,
+    questions: [
+      {
+        question: "2+2 ?",
+        ans1: "2",
+        ans2: "3",
+        ans3: "4",
+        ans4: "1",
+      },
+      {
+        question: "2+2",
+        ans1: "2",
+        ans2: "3",
+        ans3: "4",
+        ans4: "1",
+      },
+    ],
+  };
+  let questions = dummy.questions;
   return (
-    <div className="container q_add_body">
-      {/* Question No */}
-
-      <div className="question_no">
-        <p>Question No : 1</p>
-      </div>
-
-      {/* QUESTION   */}
-      <div className="  question ">
-        <div className="question_input ">
-          <p>{props.question}</p>
-        </div>
-      </div>
-
-      {/* Answers */}
-
-      {/* ANS-1 */}
-      <div className="ans">
-        <button className="ans_input">{props.ans1}</button>
-      </div>
-
-      {/* ANS-2 */}
-      <div className="ans">
-        <button className="ans_input">{props.ans2}</button>
-      </div>
-
-      {/* ANS-3 */}
-      <div className="ans">
-        <button className="ans_input">{props.ans3}</button>
-      </div>
-
-      {/* ANS-4 */}
-      <div className="ans">
-        <button className="ans_input">{props.ans4}</button>
-      </div>
-
-      <div className="end_line"></div>
-
-      {/* Changing Section */}
-    </div>
+    <>
+      <NavbarTimer />
+      {questions.map((item, index) => (
+        <Q_show_body data={item} key={index} />
+      ))}
+    </>
   );
 }
 
-export default q_show;
+export default Q_show;

@@ -1,11 +1,13 @@
 import React from "react";
 import "../components_style/navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function navbar() {
+function Navbar() {
+  const navigate = useNavigate();
   const onLogOut = () => {
     localStorage.removeItem("token");
     window.location.reload();
+    navigate("/");
   };
 
   return (
@@ -179,4 +181,4 @@ function navbar() {
   );
 }
 
-export default navbar;
+export default Navbar;

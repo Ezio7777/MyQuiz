@@ -18,7 +18,6 @@ const QuizCounter = require("../models/quiz_count");
 
 Router.get("/joinquiz/:id", fetchUser, async (req, res) => {
   try {
-    console.log("hi");
     const quiz = await Teacher.findOne({ quiz_id: req.params.id }).select([
       "quiz_name",
       "no_of_question",

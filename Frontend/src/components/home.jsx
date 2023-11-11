@@ -1,8 +1,24 @@
 import React from "react";
 import "../components_style/home.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+  let token = localStorage.getItem("token");
+  function checkAuthJoin() {
+    if (!token) {
+      navigate("/signup");
+    } else {
+      navigate("/join");
+    }
+  }
+  function checkAuthHost() {
+    if (!token) {
+      navigate("/signup");
+    } else {
+      navigate("/host");
+    }
+  }
   return (
     <div className="container">
       <div className="row  body_color">
@@ -13,10 +29,9 @@ const Home = () => {
               <i className="fa-solid fa-right-to-bracket  fa-5x card1_icon"></i>
             </div>
             <div className="card1footer">
-              <Link className="card_button" to="/join">
-                {" "}
+              <button className="card_button" onClick={checkAuthJoin}>
                 Join a Quiz
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -28,10 +43,9 @@ const Home = () => {
               <i class="fa-solid fa-circle-plus fa-5x card2_icon"></i>
             </div>
             <div className="card2footer">
-              <Link className="card_button" to="/host">
-                {" "}
+              <button className="card_button" onClick={checkAuthHost}>
                 Create a Quiz
-              </Link>
+              </button>
             </div>
           </div>
         </div>

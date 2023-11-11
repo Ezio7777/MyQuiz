@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "../components_style/navbar_timer.css";
-import { Link } from "react-router-dom";
+import "../components_style/q_show_nav.css";
+// import { Link } from "react-router-dom";
 
 function Navbar_timer() {
   const [seconds, setSeconds] = useState(0);

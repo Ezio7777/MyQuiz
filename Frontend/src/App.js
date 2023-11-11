@@ -10,7 +10,6 @@ import ShareCode from "./components/share_code";
 import QAdd from "./components/q_add";
 import ContactUs from "./components/contact_us";
 import About from "./components/about";
-import NavbarTimer from "./components/navbar_timer";
 import QShow from "./components/q_show";
 import Dashboard from "./components/dashboard.jsx";
 
@@ -18,9 +17,9 @@ import "./App.css";
 
 import {
   BrowserRouter as Router,
-  Switch,
+  // Switch,
   Route,
-  Link,
+  // Link,
   Routes,
 } from "react-router-dom";
 
@@ -117,11 +116,9 @@ function App() {
           }
         />
         <Route
-          path="/q_show"
+          path="/join/q_show"
           element={
             <>
-              <NavbarTimer />
-              <QShow />
               <QShow />
             </>
           }
