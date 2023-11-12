@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../components_style/join_code.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import QShow from "./q_show";
 
 const JoinCode = ({ loadUser, onRouteChange }) => {
@@ -51,7 +51,6 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
       );
       const json = await response.json();
       console.log(json);
-      const data = "hi";
       navigate(`./q_show`, { state: { json } });
     } else {
       alert("Enter Correct Values");

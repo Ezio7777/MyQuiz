@@ -56,7 +56,11 @@ const Host_quiz = () => {
   const Navigate = useNavigate();
 
   const onCreate = async () => {
-    if (errQuizName || errNoOfQuestion || errTimeDuration) {
+    if (
+      quizName.length < 4 ||
+      !/^(1?[0-9]|20)$/.test(noOfQuestion) ||
+      !/^(?:[1-9]|10)$/.test(timeDuration)
+    ) {
       alert("Enter Correct Details");
     } else {
       try {

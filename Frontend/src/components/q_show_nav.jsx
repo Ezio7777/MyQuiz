@@ -24,10 +24,7 @@ function Navbar_timer() {
     <div className="container timer_container">
       <div className="timer">
         <h1 className="timer_heading">Time End :</h1>
-        <h1 className="min_sec">
-          {minutes < 10 ? "0" + minutes : minutes}:
-          {seconds < 10 ? "0" + seconds : seconds}
-        </h1>
+        <h1 className="min_sec"></h1>
       </div>
     </div>
   );

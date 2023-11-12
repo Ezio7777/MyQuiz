@@ -1,0 +1,21 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+.timer_container {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: blueviolet;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 50px;
+}
+
+.timer_heading {
+  color: white;
+  font-size: 20px;
+}
+.exit_body {
+}

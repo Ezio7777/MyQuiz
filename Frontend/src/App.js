@@ -100,7 +100,6 @@ function App() {
           path="/question_add"
           element={
             <>
-              <Navbar />
               <QAdd />
             </>
           }
