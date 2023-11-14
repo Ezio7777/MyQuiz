@@ -4,8 +4,9 @@
   justify-content: center;
   align-items: center;
   height: 85vh;
+  border-radius: 50px;
   background: transparent;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
 }
 .box_body {
   display: flex;
@@ -13,22 +14,44 @@
   align-items: center;
   text-align: center;
 }
+/* details */
 
+.share_details_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.share_quiz_name {
+  width: 200px;
+  height: 40px;
+  background: #9364ff;
+  border-radius: 20px;
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: white;
+}
+.share_qNo {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 /* code-box */
 
 .code-box {
-  width: 400px;
+  width: 300px;
   border-radius: 20px;
   background: #eee;
   margin-right: 7px;
   text-align: center;
   padding: 10px;
+  font-size: 1.7rem;
 }
 .details p {
   color: white;
   background: transparent;
 
-  font-size: small;
+  font-size: 18px;
   margin-top: 5px;
 }
 
@@ -42,11 +65,11 @@
 
 .button-copy {
   padding: 0.8em 1.8em;
-  border: 2px solid #7b42ff;
+  /* border: 2px solid #7b42ff; */
   border-radius: 20px;
   position: relative;
   overflow: hidden;
-  background: transparent;
+  background-color: #9364ff;
   backdrop-filter: blur(30px);
   text-align: center;
   font-size: 16px;
@@ -77,6 +100,6 @@
 }
 
 .button-copy:hover {
-  background-color: #7b42ff;
+  background: #5f1bff;
   color: white;
 }

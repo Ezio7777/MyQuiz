@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../components_style/host_quiz.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Host_quiz = () => {
   // let token = localStorage.getItem("token");
@@ -61,7 +62,11 @@ const Host_quiz = () => {
       !/^(1?[0-9]|20)$/.test(noOfQuestion) ||
       !/^(?:[1-9]|10)$/.test(timeDuration)
     ) {
-      alert("Enter Correct Details");
+      Swal.fire({
+        icon: "warning",
+        title: "Enter Correct Details",
+        text: "",
+      });
     } else {
       try {
         localStorage.setItem("quizName", JSON.stringify(quizName));

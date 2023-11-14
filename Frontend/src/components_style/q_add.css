@@ -240,15 +240,23 @@
   color: white;
 }
 
-.done-cont {
+/* PUblish */
+
+.publish_body {
+  background: transparent;
+  backdrop-filter: blur(20px);
+  border-radius: 50px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  height: 50vh;
 }
 
 .done-btn {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  border-radius: 10px;
 }
 
 /* ADD button */

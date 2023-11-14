@@ -12,6 +12,7 @@ import ContactUs from "./components/contact_us";
 import About from "./components/about";
 import QShow from "./components/q_show";
 import Dashboard from "./components/dashboard.jsx";
+import Leaderboard from "./components/leaderboard.jsx";
 
 import "./App.css";
 
@@ -128,6 +129,15 @@ function App() {
             <>
               <Navbar />
               <Dashboard />
+            </>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <>
+              <Navbar />
+              <Leaderboard />
             </>
           }
         />

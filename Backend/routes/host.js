@@ -9,53 +9,48 @@ const Joi = require("joi");
 const fetchUser = require("../middleware/fetchUserr");
 const QuizCounter = require("../models/quiz_count");
 
-let ValidationForCreateQuiz = [
-  body(
-    "quiz_name",
-    "Enter a quiz name which conatain more than 3 letters"
-  ).isLength({ min: 3 }),
-  body("no_of_question", "Enter between 1 to 20 number").isInt({
-    min: 1,
-    max: 20,
-  }),
-  body("duration", "Enter between 1 to 20 min").isInt({ min: 1, max: 20 }),
-];
+// let ValidationForCreateQuiz = [
+//   body(
+//     "quiz_name",
+//     "Enter a quiz name which conatain more than 3 letters"
+//   ).isLength({ min: 3 }),
+//   body("no_of_question", "Enter between 1 to 20 number").isInt({
+//     min: 1,
+//     max: 20,
+//   }),
+//   body("duration", "Enter between 1 to 20 min").isInt({ min: 1, max: 20 }),
+// ];
 
 // ROUTE 1: Create a Quiz using:POST "/api/host/createquiz".
-Router.post(
-  "/createquiz",
-  fetchUser,
-  ValidationForCreateQuiz,
-  async (req, res) => {
-    let success = false;
+Router.post("/createquiz", fetchUser, async (req, res) => {
+  let success = false;
 
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ success, errors: errors.array() });
-    }
-
-    try {
-      await QuizCounter.updateOne(
-        { _id: "6547ba752a935f3835211124" },
-        {
-          $inc: { value: 1 },
-          $currentDate: { lastModified: true },
-        }
-      );
-      let counter = await QuizCounter.findById("6547ba752a935f3835211124");
-      const quizObj = {
-        ...req.body,
-        quiz_id: counter.value,
-        creator_id: req.user.id,
-      };
-      quiz = await teacher.create(quizObj);
-      res.json({ quiz });
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).send("Internal server error");
-    }
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ success, errors: errors.array() });
   }
-);
+
+  try {
+    await QuizCounter.updateOne(
+      { _id: "6547ba752a935f3835211124" },
+      {
+        $inc: { value: 1 },
+        $currentDate: { lastModified: true },
+      }
+    );
+    let counter = await QuizCounter.findById("6547ba752a935f3835211124");
+    const quizObj = {
+      ...req.body,
+      quiz_id: counter.value,
+      creator_id: req.user.id,
+    };
+    quiz = await teacher.create(quizObj);
+    res.json({ quiz });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal server error");
+  }
+});
 
 module.exports = Router;
 

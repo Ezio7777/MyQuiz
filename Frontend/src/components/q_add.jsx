@@ -2,17 +2,20 @@ import React, { useState, useEffect } from "react";
 import "../components_style/q_add.css";
 // import { Link } from "react-router-dom";
 import Qnav from "./q_add_nav";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Q_add() {
   const name = JSON.parse(localStorage.getItem("quizName"));
   const no_of_q = JSON.parse(localStorage.getItem("noOfQuestion"));
   const duration = JSON.parse(localStorage.getItem("timeDuration"));
 
+  const navigate = useNavigate();
+
   const [data_store, setDataStore] = useState([]);
 
   const [qNo, setQno] = useState(1);
 
-  const [size, setSize] = useState(no_of_q);
   const [errSize, setErrSize] = useState(false);
 
   const [question, setQuestion] = useState("");
@@ -60,28 +63,76 @@ function Q_add() {
       setans3("");
       setans4("");
 
+      //Alert for adding question
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: `Question:${qNo} added`,
+        showConfirmButton: false,
+        timer: 1000,
+      });
+
       //Checking Size
-      if (no_of_q == qNo - 2) {
+      if (qNo == no_of_q) {
         setErrSize(true);
       } else {
-        setSize(no_of_q - qNo);
+        setErrSize(false);
       }
     } else {
-      alert("Fill all the input");
+      Swal.fire({
+        icon: "warning",
+        title: "Fill all the input",
+        text: "",
+      });
     }
   };
 
   //Publish button
   const onPublish = async () => {
-    if (
-      question.length > 0 &&
-      ans1.length > 0 &&
-      ans2.length > 0 &&
-      ans3.length > 0 &&
-      ans4.length > 0 &&
-      option &&
-      qNo == no_of_q
-    ) {
+    if (qNo) {
+      try {
+        // let data = {
+        //   quiz_name: name,
+        //   no_of_question: no_of_q,
+        //   duration: duration,
+        //   questions: data_store,
+        //   publish: true,
+        // };
+        // const response = await fetch(
+        //   "http://localhost:5000/api/host/createquiz",
+        //   {
+        //     method: "POST",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       "auth-token": localStorage.getItem("token"),
+        //     },
+
+        //     body: JSON.stringify(data),
+        //   }
+        // );
+
+        // if (!response.ok) {
+        //   throw new Error("Network response was not ok");
+        // }
+
+        // // Handle the response data as needed
+        // const responseData = await response.json();
+        // console.log("Response:", responseData);
+
+        //sweetAlert
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Published",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        // //navigate to share_code page
+        navigate("/share_code");
+      } catch (error) {
+        alert(error);
+      }
     } else {
       alert("Fill all the input");
     }
@@ -89,8 +140,8 @@ function Q_add() {
 
   //Any value want to log in console
   useEffect(() => {
-    console.log(size);
-  }, [size]);
+    console.log(qNo);
+  }, [qNo]);
 
   //Validation
 
@@ -142,7 +193,7 @@ function Q_add() {
 
   return (
     <>
-      <Qnav name={name} />
+      <Qnav />
       <>
         <form onSubmit={inputHandel}>
           {!errSize ? (
@@ -292,8 +343,8 @@ function Q_add() {
               </div>
             </div>
           ) : (
-            <div className="done-cont">
-              <button className="done-btn btn btn-success" to="/share_code">
+            <div className="publish_body container">
+              <button className="done-btn btn btn-success" onClick={onPublish}>
                 <i class="fa-regular fa-circle-check"></i> Publish
               </button>
             </div>

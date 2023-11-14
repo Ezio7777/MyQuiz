@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import "../components_style/join_code.css";
 import { useNavigate } from "react-router-dom";
+import "../components_style/join_code.css";
+import Swal from "sweetalert2";
+// import { useNavigation } from "@react-navigation/native";
 // import QShow from "./q_show";
 
 const JoinCode = ({ loadUser, onRouteChange }) => {
@@ -50,10 +52,21 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
         }
       );
       const json = await response.json();
-      console.log(json);
-      navigate(`./q_show`, { state: { json } });
+      if (json == null) {
+        Swal.fire({
+          icon: "warning",
+          title: "Type correct code",
+          text: "",
+        });
+      }
+      // console.log(json);
+      navigate(`./q_show`, { state: { data: json } });
     } else {
-      alert("Enter Correct Values");
+      Swal.fire({
+        icon: "warning",
+        title: "Enter Correct Values",
+        text: "",
+      });
     }
   };
 

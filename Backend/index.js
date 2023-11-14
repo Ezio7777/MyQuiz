@@ -16,6 +16,8 @@ app.use("/api/host", require("./routes/host"));
 
 app.use("/api/join", require("./routes/join"));
 
+// app.use("/api/submit", require("./routes/submit"));
+
 //Listen
 app.listen(port, () => {
   console.log(`conected with port no: ${port}`);
