@@ -9,18 +9,6 @@ const Joi = require("joi");
 const fetchUser = require("../middleware/fetchUserr");
 const QuizCounter = require("../models/quiz_count");
 
-// let ValidationForCreateQuiz = [
-//   body(
-//     "quiz_name",
-//     "Enter a quiz name which conatain more than 3 letters"
-//   ).isLength({ min: 3 }),
-//   body("no_of_question", "Enter between 1 to 20 number").isInt({
-//     min: 1,
-//     max: 20,
-//   }),
-//   body("duration", "Enter between 1 to 20 min").isInt({ min: 1, max: 20 }),
-// ];
-
 // ROUTE 1: Create a Quiz using:POST "/api/host/createquiz".
 Router.post("/createquiz", fetchUser, async (req, res) => {
   let success = false;
@@ -55,27 +43,7 @@ Router.post("/createquiz", fetchUser, async (req, res) => {
 module.exports = Router;
 
 {
-  /*let ValidationForCreateQuiz = [
-  body("quiz_name", "Enter a valid quiz name").isLength({ min: 3 }),
-  body("no_of_question", "Enter less than 20 no").isInt({ min: 1, max: 20 }),
-  body("duration", "Enter less than 20 min").isInt({ min: 1, max: 20 }),
-];
-
-// ROUTE 1: Create a quizz using:POST "/api/host/create/".
-Router.get("/create", ValidationForCreateQuiz, async (req, res) => {
-  let success = false;
-
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ success, errors: errors.array() });
-  }
-
-  try {
-  } catch (error) {}
-});
-
-//ROUTE 2
-
+  /*
 //Unique no Generator (6-digit)
 async function generateUniqueNumber() {
   let randomNum = Math.floor(100000 + Math.random() * 900000); // Generate a random 6-digit number
@@ -96,17 +64,5 @@ async function generateUniqueNumber() {
   }
 }
 
-//Dynamic Link creator
-
-// ROUTE 2: Adding questions in quizz using:POST "/api/host/create/add_q".
-Router.get("/create/add_q", (req, res) => {
-  const UniqueNo = generateUniqueNumber()
-    .then((uniqueNumber) =>
-      console.log(`Generated unique number: ${uniqueNumber}`)
-    )
-    .catch((error) => console.error(error));
-
-  const customLink = `http://localhost:3000/join/${UniqueNo}`;
-  res.json({ link: customLink });
-});*/
+*/
 }

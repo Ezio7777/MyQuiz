@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import "../components_style/q_show.css";
 import "react-router-dom";
 import NavbarTimer from "./q_show_nav";
@@ -34,7 +34,7 @@ function Q_show() {
   const onSubmit = async () => {
     if (activeButton != null) {
       if (questions[qNo - 1].correct == activeButton) {
-        setPoint(point + 1);
+        setPoint((prevPoint) => prevPoint + 1);
       }
       // let data = {
       //   quiz_name: quiz_name,
@@ -71,7 +71,17 @@ function Q_show() {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate("/leaderboard");
+
+      const wrong = n - point;
+      const acc = (point / n) * 100;
+      const data2 = {
+        no_q: data.no_of_question,
+        quiz_name: quiz_name,
+        correct: point,
+        wrong: wrong,
+        accuracy: acc,
+      };
+      navigate("/result", { state: { data: data2 } });
     } else {
       Swal.fire({
         icon: "warning",
@@ -80,12 +90,14 @@ function Q_show() {
       });
     }
   };
-
+  useEffect(() => {
+    console.log(point);
+  }, [point]);
   // HandelNext
   const onNext = () => {
     if (activeButton != null) {
       if (questions[qNo - 1].correct == activeButton) {
-        setPoint(point + 1);
+        setPoint((prevPoint) => prevPoint + 1);
       }
       console.log(point);
       setActiveButton(null);

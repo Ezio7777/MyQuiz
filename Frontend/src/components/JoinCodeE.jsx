@@ -58,9 +58,10 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
           title: "Type correct code",
           text: "",
         });
+      } else {
+        navigate(`./q_show`, { state: { data: json } });
       }
       // console.log(json);
-      navigate(`./q_show`, { state: { data: json } });
     } else {
       Swal.fire({
         icon: "warning",
