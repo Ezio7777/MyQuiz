@@ -59,7 +59,7 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
           text: "",
         });
       } else {
-        navigate(`./q_show`, { state: { data: json } });
+        navigate(`./q_show`, { state: { data: json, name: displayName } });
       }
       // console.log(json);
     } else {

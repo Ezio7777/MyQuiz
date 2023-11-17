@@ -1,20 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { flushSync } from "react-dom";
 import "../components_style/q_show.css";
 import "react-router-dom";
 import NavbarTimer from "./q_show_nav";
-import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 function Q_show() {
   const location = useLocation();
   const data = location.state.data;
-
-  const duration = data.duration;
+  // const duration = data.duration;
   const questions = data.questions;
   const quiz_name = data.quiz_name;
   const n = data.no_of_question;
   const quiz_id = data.quiz_id;
-  // console.log(questions);
+  const name = location.state.name;
+
+  //Timer Area
+
+  const timer = useRef(null);
+  const progressBar = useRef(null);
 
   // Handel Ans Buttons
   const [activeButton, setActiveButton] = useState(null);
@@ -24,6 +29,10 @@ function Q_show() {
 
   // Points
   const [point, setPoint] = useState(0);
+
+  useEffect(() => {
+    console.log(point);
+  }, [point]);
 
   //Question No
   const [qNo, setQno] = useState(1);
@@ -36,31 +45,35 @@ function Q_show() {
       if (questions[qNo - 1].correct == activeButton) {
         setPoint((prevPoint) => prevPoint + 1);
       }
-      // let data = {
-      //   quiz_name: quiz_name,
-      //   quiz_id: quiz_id,
-      //   no_of_question: n,
-      //   duration: duration,
-      //   point: point,
-      // };
-      // const response = await fetch(
-      //   "http://localhost:5000/api/submit/dashboard",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       "auth-token": localStorage.getItem("token"),
-      //     },
 
-      //     body: JSON.stringify(data),
-      //   }
-      // );
+      const wrong = n - point;
+      const acc = (point / n) * 100;
+
+      const data2 = {
+        name: name,
+        quiz_id: quiz_id,
+        no_q: data.no_of_question,
+        quiz_name: quiz_name,
+        correct: point,
+        wrong: wrong,
+        accuracy: acc,
+      };
+
+      const response = await fetch("http://localhost:5000/api/submit/result", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+
+        body: JSON.stringify(data2),
+      });
 
       // if (!response.ok) {
       //   throw new Error("Network response was not ok");
       // }
 
-      // // Handle the response data as needed
+      // Handle the response data as needed
       // const responseData = await response.json();
       // console.log("Response:", responseData);
 
@@ -72,15 +85,6 @@ function Q_show() {
         timer: 1500,
       });
 
-      const wrong = n - point;
-      const acc = (point / n) * 100;
-      const data2 = {
-        no_q: data.no_of_question,
-        quiz_name: quiz_name,
-        correct: point,
-        wrong: wrong,
-        accuracy: acc,
-      };
       navigate("/result", { state: { data: data2 } });
     } else {
       Swal.fire({
@@ -90,11 +94,18 @@ function Q_show() {
       });
     }
   };
-  useEffect(() => {
-    console.log(point);
-  }, [point]);
+
   // HandelNext
+
   const onNext = () => {
+    //Timer
+    // if(timer.current){
+    //   clearTimeout(timer.current);
+    // }
+    // flushSync(()=>{
+    //   setActiveButton(activeButton);
+    // })
+
     if (activeButton != null) {
       if (questions[qNo - 1].correct == activeButton) {
         setPoint((prevPoint) => prevPoint + 1);
@@ -116,7 +127,7 @@ function Q_show() {
 
   return (
     <>
-      <NavbarTimer />
+      <NavbarTimer name={quiz_name} code={quiz_id} />
       <>
         <div>
           <div className="container q_add_body">

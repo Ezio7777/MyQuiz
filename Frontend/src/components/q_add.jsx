@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import "../components_style/q_add.css";
 // import { Link } from "react-router-dom";
 import Qnav from "./q_add_nav";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 function Q_add() {
-  const name = JSON.parse(localStorage.getItem("quizName"));
-  const no_of_q = JSON.parse(localStorage.getItem("noOfQuestion"));
-  const duration = JSON.parse(localStorage.getItem("timeDuration"));
+  const location = useLocation();
+  const data = location.state.data;
+
+  const name = data.quizName;
+  const no_of_q = data.noOfQuestion;
+  const duration = data.duration;
 
   const navigate = useNavigate();
 
@@ -91,33 +94,29 @@ function Q_add() {
   const onPublish = async () => {
     if (qNo) {
       try {
-        // let data = {
-        //   quiz_name: name,
-        //   no_of_question: no_of_q,
-        //   duration: duration,
-        //   questions: data_store,
-        //   publish: true,
-        // };
-        // const response = await fetch(
-        //   "http://localhost:5000/api/host/createquiz",
-        //   {
-        //     method: "POST",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //       "auth-token": localStorage.getItem("token"),
-        //     },
+        let data = {
+          quiz_name: name,
+          no_of_question: no_of_q,
+          duration: duration,
+          questions: data_store,
+          publish: true,
+        };
+        const response = await fetch(
+          "http://localhost:5000/api/host/createquiz",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token": localStorage.getItem("token"),
+            },
 
-        //     body: JSON.stringify(data),
-        //   }
-        // );
+            body: JSON.stringify(data),
+          }
+        );
 
-        // if (!response.ok) {
-        //   throw new Error("Network response was not ok");
-        // }
-
-        // // Handle the response data as needed
-        // const responseData = await response.json();
-        // console.log("Response:", responseData);
+        // Handle the response data as needed
+        const json = await response.json();
+        const quiz_id = json.quiz_id;
 
         //sweetAlert
         Swal.fire({
@@ -129,7 +128,15 @@ function Q_add() {
         });
 
         // //navigate to share_code page
-        navigate("/share_code");
+        const share_data = {
+          quiz_id: quiz_id,
+          duration: duration,
+          name: name,
+          qNo: no_of_q,
+        };
+        navigate("/share_code", {
+          state: { data: share_data },
+        });
       } catch (error) {
         alert(error);
       }
@@ -200,7 +207,9 @@ function Q_add() {
             <div className="container q_add_body">
               {/* Question No. */}
               <div className="question_no">
-                <p>Question No: {qNo}</p>
+                <p>
+                  Question No: {qNo}/{no_of_q}
+                </p>
               </div>
               {/* QUESTION   */}
               <div className="  question ">

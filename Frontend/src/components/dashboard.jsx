@@ -1,15 +1,24 @@
 import React, { useState } from "react";
 import "../components_style/dashboard.css";
+import { useLocation } from "react-router-dom";
+import Host from "./dashboard_host";
+import Join from "./dashboard_join";
 
 const Dashboard = () => {
+  const location = useLocation();
+  const data = location.state.data;
+
+  const join = data.join;
+  const host = data.host;
+
   const [selectedOption, setSelectedOption] = useState("join");
 
   const handleOptionChange = (option) => {
     setSelectedOption(option);
   };
-
   return (
     <div className="dashboard-container container">
+      <div class="h1_text">DashBoard</div>
       <div className="option-section">
         <div
           className={`option ${selectedOption === "join" ? "selected" : ""}`}
@@ -27,39 +36,47 @@ const Dashboard = () => {
 
       <div className="info-section">
         {selectedOption === "join" ? (
-          <div className="join-info">
-            <div className="column">
-              <div className="info-title">Quiz Name</div>
-              <div className="info-detail">OSS</div>
-              <div className="info-detail">AP</div>
+          //JOIN
+          <div className="container aboutbody">
+            <div class="head_board">
+              <div className="board">
+                <div class=" boxes el-1 ">Quiz Name</div>
+              </div>
+              <div className="board">
+                <div class=" boxes el-2 ">Total Question</div>
+              </div>
+              <div className="board">
+                <div class=" boxes el-3 ">Correct</div>
+              </div>
+              <div className="board">
+                <div class=" boxes el-4 ">%Achieved</div>
+              </div>
             </div>
-            <div className="column">
-              <div className="info-title">No. of Questions</div>
-              <div className="info-detail">10</div>
-              <div className="info-detail">20</div>
-            </div>
-            <div className="column">
-              <div className="info-title">Total Points</div>
-              <div className="info-detail">20</div>
-              <div className="info-detail">40</div>
-            </div>
+            {join.map((each, index) => {
+              return <Join key={index} data={each} />;
+            })}
           </div>
         ) : (
-          <div className="host-info">
-            <div className="column">
-              <div className="info-title">Quiz Name</div>
-              <div className="info-detail">OSS</div>
-              <div className="info-detail">AP</div>
+          //HOST
+          <div className="container aboutbody">
+            <div class="head_board">
+              <div className="board">
+                <div class=" boxes el-1 ">Quiz Name</div>
+              </div>
+              <div className="board">
+                <div class=" boxes el-2 ">Total Question</div>
+              </div>
+              <div className="board">
+                <div class=" boxes el-3 ">Duration</div>
+              </div>
+              <div className="board">
+                <div class=" boxes el-4 ">Quiz_id</div>
+              </div>
             </div>
-            <div className="column">
-              <div className="info-title">No. of Students</div>
-              <div className="info-detail">50</div>
-              <div className="info-detail">60</div>
-            </div>
-            <div className="column">
-              <div className="info-title">Duration</div>
-              <div className="info-detail">30 minutes</div>
-              <div className="info-detail">50 minutes</div>
+            <div>
+              {host.map((each, index) => {
+                return <Host key={index} data={each} />;
+              })}
             </div>
           </div>
         )}

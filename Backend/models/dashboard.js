@@ -2,13 +2,12 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const DashboardSchema = new Schema({
-  creator_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "user",
+  _id: {
+    type: String,
     required: true,
   },
   host: [],
   join: [],
 });
-const Dashboard = mongoose.model("quizcounter", DashboardSchema);
+const Dashboard = mongoose.model("dashboard", DashboardSchema);
 module.exports = Dashboard;

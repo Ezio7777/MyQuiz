@@ -10,6 +10,22 @@ function Navbar() {
     navigate("/");
   };
 
+  const onDashboard = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/dashboard/show`, {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+      });
+      const json = await response.json();
+      navigate("/dashboard", { state: { data: json } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       {localStorage.getItem("token") ? (
@@ -73,9 +89,9 @@ function Navbar() {
                         </Link>
                       </li>
                       <li class="nav-item mx-2">
-                        <Link class="nav-link" to="/dashboard">
+                        <button class="nav-link" onClick={onDashboard}>
                           Dashboard
-                        </Link>
+                        </button>
                       </li>
                     </ul>
 

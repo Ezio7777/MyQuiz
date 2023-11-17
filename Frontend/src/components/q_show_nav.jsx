@@ -2,28 +2,16 @@ import React, { useEffect, useState } from "react";
 import "../components_style/q_show_nav.css";
 // import { Link } from "react-router-dom";
 
-function Navbar_timer() {
-  const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinuites] = useState(0);
-
-  var timer;
-
-  useEffect(() => {
-    timer = setInterval(() => {
-      setSeconds(seconds + 1);
-
-      if (seconds === 59) {
-        setMinuites(minutes + 1);
-        setSeconds(0);
-      }
-    }, 1000);
-    return () => clearInterval(timer);
-  });
+function Navbar_timer(props) {
+  const name = props.name;
+  const code = props.code;
 
   return (
     <div className="container timer_container">
       <div className="timer">
-        <h1 className="timer_heading">Time End :</h1>
+        <h1 className="timer_heading">
+          {name}:{code}
+        </h1>
         <h1 className="min_sec"></h1>
       </div>
     </div>

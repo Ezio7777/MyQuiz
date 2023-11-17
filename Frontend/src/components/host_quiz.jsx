@@ -69,10 +69,12 @@ const Host_quiz = () => {
       });
     } else {
       try {
-        localStorage.setItem("quizName", JSON.stringify(quizName));
-        localStorage.setItem("noOfQuestion", JSON.stringify(noOfQuestion));
-        localStorage.setItem("timeDuration", JSON.stringify(timeDuration));
-        Navigate("/question_add");
+        const data = {
+          quizName: quizName,
+          noOfQuestion: noOfQuestion,
+          duration: timeDuration,
+        };
+        Navigate("/question_add", { state: { data: data } });
       } catch (error) {
         alert(error);
       }

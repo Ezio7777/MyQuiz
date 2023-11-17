@@ -7,6 +7,8 @@ connectToMongo();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+//Port No.
 const port = 5000;
 
 //Routes
@@ -16,7 +18,11 @@ app.use("/api/host", require("./routes/host"));
 
 app.use("/api/join", require("./routes/join"));
 
-// app.use("/api/submit", require("./routes/submit"));
+app.use("/api/submit", require("./routes/submit"));
+
+app.use("/api/dashboard", require("./routes/dashboard"));
+
+app.use("/api/leaderboard", require("./routes/leaderboard"));
 
 //Listen
 app.listen(port, () => {

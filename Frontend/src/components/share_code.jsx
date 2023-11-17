@@ -1,25 +1,41 @@
 import React from "react";
 import "../components_style/share_code.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Share_code() {
-  const code = 123456;
-  const name = JSON.parse(localStorage.getItem("quizName"));
-  const qNo = JSON.parse(localStorage.getItem("noOfQuestion"));
+  const location = useLocation();
+  const data = location.state.data;
+
+  const code = data.quiz_id;
+  const duration = data.duration;
+  const name = data.name;
+  const qNo = data.qNo;
+
+  //STOP
+  const navigate = useNavigate();
+  const onStop = async () => {
+    navigate("/");
+  };
   return (
     <div className="container copy_box_body">
-      <div className="box_body row">
+      <div className="box_body">
         <div className="share_details_body">
-          <p className="share_quiz_name">{name}</p>
+          <p className="share_quiz_name">Quiz Name - {name}</p>
           <p className="share_qNo">Total question: {qNo}</p>
         </div>
-        <div className="code-box col-lg-12">
-          <p>{code} </p>
+        <div className="code-box ">
+          <p>Code - {code} </p>
         </div>
-        <div className="details col-lg-12">
+        <div className="share_info">
           <p>Share this code with participants</p>
         </div>
-        <div className="col-lg-12">
-          <button className="button-copy btn">Copy</button>
+        <div className="duration_info">
+          <p>Duration - {duration} minute</p>
+        </div>
+        <div className="">
+          <button className="button-copy btn" onClick={onStop}>
+            STOP <i class="fa-solid fa-hand"></i>
+          </button>
         </div>
       </div>
     </div>

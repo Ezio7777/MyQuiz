@@ -1,23 +1,13 @@
 const express = require("express");
 const Router = express.Router();
 const teacher = require("../models/teacher");
-const User = require("../models/User");
-const { body, validationResult } = require("express-validator");
-const bcrypt = require("bcryptjs");
-var jwt = require("jsonwebtoken");
-const Joi = require("joi");
 const fetchUser = require("../middleware/fetchUserr");
 const QuizCounter = require("../models/quiz_count");
+const dashboard = require("../models/dashboard");
+const leaderboard = require("../models/leaderboard");
 
 // ROUTE 1: Create a Quiz using:POST "/api/host/createquiz".
 Router.post("/createquiz", fetchUser, async (req, res) => {
-  let success = false;
-
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ success, errors: errors.array() });
-  }
-
   try {
     await QuizCounter.updateOne(
       { _id: "6547ba752a935f3835211124" },
@@ -27,13 +17,48 @@ Router.post("/createquiz", fetchUser, async (req, res) => {
       }
     );
     let counter = await QuizCounter.findById("6547ba752a935f3835211124");
+    const quiz_id = counter.value;
     const quizObj = {
       ...req.body,
       quiz_id: counter.value,
       creator_id: req.user.id,
     };
     quiz = await teacher.create(quizObj);
-    res.json({ quiz });
+    res.json({ quiz_id });
+
+    //update dashboard
+    const id = req.user.id;
+
+    let id_check = await dashboard.findById(id);
+
+    const newHost = {
+      quiz_name: req.body.quiz_name,
+      no_of_question: req.body.no_of_question,
+      duration: req.body.duration,
+      quiz_id: counter.value,
+    };
+
+    try {
+      if (id_check == null) {
+        await dashboard.create({ _id: id }, { join: [] }, { host: [newHost] });
+      } else {
+        await dashboard.updateOne({ _id: id }, { $push: { host: newHost } });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    //Create LeaderBoard for each quiz
+    try {
+      await leaderboard.create({
+        creater_id: id,
+        quiz_id: counter.value,
+        quiz_name: req.body.quiz_name,
+        candidate: [],
+      });
+    } catch (error) {
+      console.log(error);
+    }
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal server error");
