@@ -5,6 +5,7 @@
   flex-direction: column;
   background: transparent;
   backdrop-filter: blur(50px);
+  height: auto;
 }
 
 .option-section {
@@ -14,7 +15,7 @@
 }
 .aboutbody {
   background: transparent;
-  height: 65vh;
+  height: auto;
   text-align: center;
   backdrop-filter: blur(30px);
 }

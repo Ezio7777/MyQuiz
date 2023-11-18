@@ -40,6 +40,10 @@ function Q_show() {
               setActiveButton(5);
               onSubmit();
             } else {
+              setActiveButton(activeButton);
+              if (questions[qNo - 1].correct == activeButton) {
+                setPoint(point + 1);
+              }
               onSubmit();
             }
           } else {
@@ -63,17 +67,11 @@ function Q_show() {
     setActiveButton(buttonNumber);
   };
 
-  //  Increase Point
-
-  const increasePoint = () => {
-    setPoint(point + 1);
-  };
-
   //Submit Button
   const onSubmit = async () => {
-    if (questions[qNo - 1].correct == activeButton) {
-      increasePoint();
-    }
+    // if (questions[qNo - 1].correct == activeButton) {
+    //   increasePoint();
+    // }
 
     const wrong = n - point;
     const acc = (point / n) * 100;
@@ -117,11 +115,11 @@ function Q_show() {
     ////////////////
     if (activeButton != null) {
       if (questions[qNo - 1].correct == activeButton) {
-        increasePoint();
+        setPoint(point + 1);
       }
       setActiveButton(null);
       setQno(qNo + 1);
-      if (qNo == n - 1) {
+      if (qNo == n) {
         setSubmit(true);
       }
     } else {
@@ -135,99 +133,94 @@ function Q_show() {
 
   //Prevent Unwanted Exit
 
-  // // Points
-  // useEffect(
-  //   (incPoint = () => {
-  //     setPoint(point + 1);
-  //   }),
-  //   [point]
-  // );
-
   return (
     <>
       <NavbarTimer name={quiz_name} code={quiz_id} />
       <>
-        <div>
-          <div className="container q_add_body">
-            {/* ProgressBar */}
-            <div className="timer_body">
-              <div className={`timer ${sec < 10 && min == 0 ? "deadtime" : 0}`}>
-                <i class="fa-solid fa-stopwatch"></i>
-                {min < 10 ? `0${min}` : min}:{sec < 10 ? `0${sec}` : sec}
+        {submit ? (
+          <div className="submit_btn_body">
+            <button className="next_btn btn" onClick={onSubmit}>
+              Submit <i class="fa-regular fa-circle-check"></i>
+            </button>
+          </div>
+        ) : (
+          <div>
+            <div className="container q_add_body">
+              {/* Timer */}
+              <div className="timer_body">
+                <div
+                  className={`timer ${sec < 10 && min == 0 ? "deadtime" : 0}`}
+                >
+                  <i class="fa-solid fa-stopwatch"></i>
+                  {min < 10 ? `0${min}` : min}:{sec < 10 ? `0${sec}` : sec}
+                </div>
               </div>
-            </div>
-            {/* Question No */}
+              {/* Question No */}
 
-            <div className="question_no">
-              <p>
-                Question No : {qNo} / {n}
-              </p>
-            </div>
-
-            {/* QUESTION   */}
-            <div className="  question ">
-              <div className="question_input ">
-                <p>{questions[qNo - 1].question}</p>
+              <div className="question_no">
+                <p>
+                  Question No : {qNo} / {n}
+                </p>
               </div>
-            </div>
 
-            {/* Answers */}
+              {/* QUESTION   */}
+              <div className="  question ">
+                <div className="question_input ">
+                  <p>{questions[qNo - 1].question}</p>
+                </div>
+              </div>
 
-            {/* ANS-1 */}
-            <div className="ans">
-              <button
-                className={`ans_input ${activeButton === 1 ? "active" : ""}`}
-                onClick={() => handleButtonClick(1)}
-              >
-                {questions[qNo - 1].ans1}
-              </button>
-            </div>
+              {/* Answers */}
 
-            {/* ANS-2 */}
-            <div className="ans">
-              <button
-                className={`ans_input ${activeButton === 2 ? "active" : ""}`}
-                onClick={() => handleButtonClick(2)}
-              >
-                {questions[qNo - 1].ans2}
-              </button>
-            </div>
-
-            {/* ANS-3 */}
-            <div className="ans">
-              <button
-                className={`ans_input ${activeButton === 3 ? "active" : ""}`}
-                onClick={() => handleButtonClick(3)}
-              >
-                {questions[qNo - 1].ans3}
-              </button>
-            </div>
-            {/* ANS-4 */}
-            <div className="ans">
-              <button
-                className={`ans_input ${activeButton === 4 ? "active" : ""}`}
-                onClick={() => handleButtonClick(4)}
-              >
-                {questions[qNo - 1].ans4}
-              </button>
-            </div>
-
-            {/* Changing Section */}
-            {submit ? (
-              <div className="next_btn_body">
-                <button className="next_btn btn" onClick={onSubmit}>
-                  Submit <i class="fa-regular fa-circle-check"></i>
+              {/* ANS-1 */}
+              <div className="ans">
+                <button
+                  className={`ans_input ${activeButton === 1 ? "active" : ""}`}
+                  onClick={() => handleButtonClick(1)}
+                >
+                  {questions[qNo - 1].ans1}
                 </button>
               </div>
-            ) : (
+
+              {/* ANS-2 */}
+              <div className="ans">
+                <button
+                  className={`ans_input ${activeButton === 2 ? "active" : ""}`}
+                  onClick={() => handleButtonClick(2)}
+                >
+                  {questions[qNo - 1].ans2}
+                </button>
+              </div>
+
+              {/* ANS-3 */}
+              <div className="ans">
+                <button
+                  className={`ans_input ${activeButton === 3 ? "active" : ""}`}
+                  onClick={() => handleButtonClick(3)}
+                >
+                  {questions[qNo - 1].ans3}
+                </button>
+              </div>
+              {/* ANS-4 */}
+              <div className="ans">
+                <button
+                  className={`ans_input ${activeButton === 4 ? "active" : ""}`}
+                  onClick={() => handleButtonClick(4)}
+                >
+                  {questions[qNo - 1].ans4}
+                </button>
+              </div>
+
+              {/* Changing Section */}
+
               <div className="next_btn_body">
                 <button className="next_btn btn" onClick={onNext}>
                   Next <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
-            )}
+            </div>
           </div>
-        </div>
+        )}
       </>
     </>
   );

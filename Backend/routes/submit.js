@@ -27,6 +27,7 @@ Router.post("/result", fetchUser, async (req, res) => {
     const candidate = await LeaderBoard.findOne({ quiz_id: req.body.quiz_id });
 
     const newScore = {
+      quiz_id: req.body.quiz_id,
       name: req.body.name,
       correct: req.body.correct,
       wrong: req.body.wrong,

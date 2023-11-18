@@ -145,3 +145,15 @@
     gap: 10rem;
   }
 }
+
+.submit_btn_body {
+  background: transparent;
+  backdrop-filter: blur(20px);
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  height: 50vh;
+}

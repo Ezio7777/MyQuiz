@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../components_style/join_code.css";
 import Swal from "sweetalert2";
@@ -52,7 +52,13 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
         }
       );
       const json = await response.json();
-      if (json == null) {
+      if (json == "DONE") {
+        Swal.fire({
+          icon: "warning",
+          title: "You Already Attempt quiz",
+          text: "",
+        });
+      } else if (json == null) {
         Swal.fire({
           icon: "warning",
           title: "Type correct code",

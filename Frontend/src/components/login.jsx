@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../components_style/login.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = ({ loadUser, onRouteChange }) => {
   const [signInEmail, setSignInEmail] = useState("");
@@ -30,16 +31,12 @@ const Login = ({ loadUser, onRouteChange }) => {
       localStorage.setItem("token", json.authtoken);
       handleClick();
     } else {
-      alert("Invalid Credentials");
+      Swal.fire({
+        icon: "warning",
+        title: "Invalid Credentials",
+        text: "",
+      });
     }
-    /*.then(response => response.json())
-        .then(user => {
-  
-            if (user.id) {
-                loadUser(user);
-                onRouteChange("home");
-            }
-        })*/
   };
 
   return (

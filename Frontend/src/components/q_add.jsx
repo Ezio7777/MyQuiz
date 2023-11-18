@@ -141,7 +141,11 @@ function Q_add() {
         alert(error);
       }
     } else {
-      alert("Fill all the input");
+      Swal.fire({
+        icon: "warning",
+        title: "Fill all the input",
+        text: "",
+      });
     }
   };
 
