@@ -1,6 +1,7 @@
 import React from "react";
 import "../components_style/share_code.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Share_code() {
   const location = useLocation();
@@ -11,11 +12,50 @@ function Share_code() {
   const name = data.name;
   const qNo = data.qNo;
 
-  //STOP
+  //Continue
   const navigate = useNavigate();
-  const onStop = async () => {
+  const onContinue = async () => {
     navigate("/");
   };
+
+  //Stop
+
+  const onStop = async () => {
+    try {
+      const response = fetch("http://localhost:5000/api/unpublish/expire", {
+        method: "POST",
+        headers: {
+          "Conetent-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify(code),
+      });
+      if (response) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Stop",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Someting Wrong",
+          text: "",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: "warning",
+        title: "Someting Wrong",
+        text: "",
+      });
+    }
+  };
+
   return (
     <div className="container copy_box_body">
       <div className="box_body">
@@ -32,9 +72,12 @@ function Share_code() {
         <div className="duration_info">
           <p>Duration - {duration} minute</p>
         </div>
-        <div className="">
+        <div className="btn_container">
           <button className="button-copy btn" onClick={onStop}>
             STOP <i class="fa-solid fa-hand"></i>
+          </button>
+          <button className="button-copy btn cont_btn" onClick={onContinue}>
+            Continue <i class="fa-solid fa-circle-up fa-lg"></i>
           </button>
         </div>
       </div>

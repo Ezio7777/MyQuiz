@@ -110,9 +110,7 @@ function App() {
           path="/share_code"
           element={
             <>
-              <Navbar />
               <ShareCode />
-              <Footer />
             </>
           }
         />

@@ -1,7 +1,39 @@
-import React from "react";
 import "../components_style/contact_us.css";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
-const contact_us = () => {
+const Contact_us = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_4w92gwl",
+        "template_3fueuke",
+        form.current,
+        "Xo2LfNQJlzLI6-zKe"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Message Sent",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          e.target.reset();
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <div className="container contact_us_body">
       {/* icons */}
@@ -24,26 +56,35 @@ const contact_us = () => {
       {/* Form */}
       <div className="form-container">
         <p className="title">Contact Us</p>
-        <form className="form">
+        <form className="form" ref={form} onSubmit={sendEmail}>
+          <div className="input-group">
+            <label for="username">Name</label>
+            <input type="text" name="user_name" id="username" placeholder="" />
+          </div>
           <div className="input-group">
             <label for="username">Email</label>
-            <input type="text" name="username" id="username" placeholder="" />
+            <input
+              type="email"
+              name="user_email"
+              id="username"
+              placeholder=""
+            />
           </div>
           <div className="input-group">
             <label for="password">Message</label>
             <input
               type="text"
-              name="password"
+              name="message"
               id="password"
               className="message"
               placeholder=""
             />
           </div>
-          <button className="sign">Send Message</button>
+          <input className="sign" type="submit" value="Send" />
         </form>
       </div>
     </div>
   );
 };
 
-export default contact_us;
+export default Contact_us;

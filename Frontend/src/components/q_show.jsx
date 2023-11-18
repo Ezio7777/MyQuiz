@@ -1,6 +1,5 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { flushSync } from "react-dom";
 import "../components_style/q_show.css";
 import "react-router-dom";
 import NavbarTimer from "./q_show_nav";
@@ -9,74 +8,97 @@ import Swal from "sweetalert2";
 function Q_show() {
   const location = useLocation();
   const data = location.state.data;
-  // const duration = data.duration;
+  const duration = data.duration;
   const questions = data.questions;
   const quiz_name = data.quiz_name;
   const n = data.no_of_question;
   const quiz_id = data.quiz_id;
   const name = location.state.name;
+  const navigate = useNavigate();
+
+  const [submit, setSubmit] = useState(false);
+  const [qNo, setQno] = useState(1);
+  const [point, setPoint] = useState(0);
+  const [activeButton, setActiveButton] = useState(null);
 
   //Timer Area
 
-  const timer = useRef(null);
-  const progressBar = useRef(null);
+  const [min, setMin] = useState(duration);
+  const [sec, setSec] = useState(0);
+  const [isActive, setIsActive] = useState(true);
+
+  useEffect(() => {
+    let timer;
+
+    if (isActive) {
+      timer = setInterval(() => {
+        if (sec === 0) {
+          if (min === 0) {
+            // Pomodoro session is over.
+            setIsActive(false);
+            if (activeButton == null) {
+              setActiveButton(5);
+              onSubmit();
+            } else {
+              onSubmit();
+            }
+          } else {
+            // Move to the next minute
+            setMin((prevMinutes) => prevMinutes - 1);
+            setSec(59);
+          }
+        } else {
+          // Decrease the seconds
+          setSec((prevSeconds) => prevSeconds - 1);
+        }
+      }, 1000);
+    }
+
+    // Cleanup the interval on component unmount or when isActive becomes false
+    return () => clearInterval(timer);
+  }, [isActive, min, sec]);
 
   // Handel Ans Buttons
-  const [activeButton, setActiveButton] = useState(null);
   const handleButtonClick = (buttonNumber) => {
     setActiveButton(buttonNumber);
   };
 
-  // Points
-  const [point, setPoint] = useState(0);
+  //  Increase Point
 
-  useEffect(() => {
-    console.log(point);
-  }, [point]);
-
-  //Question No
-  const [qNo, setQno] = useState(1);
+  const increasePoint = () => {
+    setPoint(point + 1);
+  };
 
   //Submit Button
-  const navigate = useNavigate();
-  const [submit, setSubmit] = useState(false);
   const onSubmit = async () => {
-    if (activeButton != null) {
-      if (questions[qNo - 1].correct == activeButton) {
-        setPoint((prevPoint) => prevPoint + 1);
-      }
+    if (questions[qNo - 1].correct == activeButton) {
+      increasePoint();
+    }
 
-      const wrong = n - point;
-      const acc = (point / n) * 100;
+    const wrong = n - point;
+    const acc = (point / n) * 100;
 
-      const data2 = {
-        name: name,
-        quiz_id: quiz_id,
-        no_q: data.no_of_question,
-        quiz_name: quiz_name,
-        correct: point,
-        wrong: wrong,
-        accuracy: acc,
-      };
+    const data2 = {
+      name: name,
+      quiz_id: quiz_id,
+      no_q: data.no_of_question,
+      quiz_name: quiz_name,
+      correct: point,
+      wrong: wrong,
+      accuracy: acc,
+    };
 
-      const response = await fetch("http://localhost:5000/api/submit/result", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
-        },
+    const response = await fetch("http://localhost:5000/api/submit/result", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
 
-        body: JSON.stringify(data2),
-      });
+      body: JSON.stringify(data2),
+    });
 
-      // if (!response.ok) {
-      //   throw new Error("Network response was not ok");
-      // }
-
-      // Handle the response data as needed
-      // const responseData = await response.json();
-      // console.log("Response:", responseData);
-
+    if (response) {
       Swal.fire({
         position: "center",
         icon: "success",
@@ -84,33 +106,19 @@ function Q_show() {
         showConfirmButton: false,
         timer: 1500,
       });
-
-      navigate("/result", { state: { data: data2 } });
-    } else {
-      Swal.fire({
-        icon: "warning",
-        title: "Choose one of the Answer",
-        text: "",
-      });
     }
+
+    navigate("/result", { state: { data: data2 } });
   };
 
   // HandelNext
 
-  const onNext = () => {
-    //Timer
-    // if(timer.current){
-    //   clearTimeout(timer.current);
-    // }
-    // flushSync(()=>{
-    //   setActiveButton(activeButton);
-    // })
-
+  const onNext = async () => {
+    ////////////////
     if (activeButton != null) {
       if (questions[qNo - 1].correct == activeButton) {
-        setPoint((prevPoint) => prevPoint + 1);
+        increasePoint();
       }
-      console.log(point);
       setActiveButton(null);
       setQno(qNo + 1);
       if (qNo == n - 1) {
@@ -125,12 +133,29 @@ function Q_show() {
     }
   };
 
+  //Prevent Unwanted Exit
+
+  // // Points
+  // useEffect(
+  //   (incPoint = () => {
+  //     setPoint(point + 1);
+  //   }),
+  //   [point]
+  // );
+
   return (
     <>
       <NavbarTimer name={quiz_name} code={quiz_id} />
       <>
         <div>
           <div className="container q_add_body">
+            {/* ProgressBar */}
+            <div className="timer_body">
+              <div className={`timer ${sec < 10 && min == 0 ? "deadtime" : 0}`}>
+                <i class="fa-solid fa-stopwatch"></i>
+                {min < 10 ? `0${min}` : min}:{sec < 10 ? `0${sec}` : sec}
+              </div>
+            </div>
             {/* Question No */}
 
             <div className="question_no">

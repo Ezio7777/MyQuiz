@@ -35,11 +35,11 @@ Router.post("/result", fetchUser, async (req, res) => {
 
     if (candidate) {
       await LeaderBoard.updateOne(
-        { creater_id: id },
+        { quiz_id: req.body.quiz_id },
         { $push: { candidate: newScore } }
       );
     } else {
-      console.log("not update");
+      console.log("not save");
     }
 
     res.json({ id });

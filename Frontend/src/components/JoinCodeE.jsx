@@ -58,6 +58,12 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
           title: "Type correct code",
           text: "",
         });
+      } else if (json == "expire") {
+        Swal.fire({
+          icon: "warning",
+          title: "Quiz Expired",
+          text: "",
+        });
       } else {
         navigate(`./q_show`, { state: { data: json, name: displayName } });
       }
@@ -65,7 +71,7 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
     } else {
       Swal.fire({
         icon: "warning",
-        title: "Enter Correct Values",
+        title: "Enter correct Deatils",
         text: "",
       });
     }

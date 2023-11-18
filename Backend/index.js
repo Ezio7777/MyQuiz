@@ -24,6 +24,8 @@ app.use("/api/dashboard", require("./routes/dashboard"));
 
 app.use("/api/leaderboard", require("./routes/leaderboard"));
 
+app.use("/api/unpublish", require("./routes/expire"));
+
 //Listen
 app.listen(port, () => {
   console.log(`conected with port no: ${port}`);

@@ -11,6 +11,21 @@
   padding-bottom: 100px;
 }
 
+/* tIMERR  */
+.timer_body {
+  background-color: white;
+  border-radius: 50px;
+  padding: 10px;
+  width: 200px;
+}
+.timer {
+  color: black;
+  font-size: 2rem;
+}
+.deadtime {
+  color: red;
+}
+
 /* question_no */
 
 .question_no {
