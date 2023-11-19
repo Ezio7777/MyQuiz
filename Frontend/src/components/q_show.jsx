@@ -23,7 +23,7 @@ function Q_show() {
 
   //Timer Area
 
-  const [min, setMin] = useState(duration);
+  const [min, setMin] = useState(20);
   const [sec, setSec] = useState(0);
   const [isActive, setIsActive] = useState(true);
 

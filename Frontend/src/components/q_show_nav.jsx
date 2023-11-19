@@ -7,12 +7,14 @@ function Navbar_timer(props) {
   const code = props.code;
 
   return (
-    <div className="container timer_container">
-      <div className="timer">
-        <h1 className="timer_heading">
-          {name}:{code}
-        </h1>
-        <h1 className="min_sec"></h1>
+    <div className="container add_nav_container">
+      <div className="heading_cont">
+        <div className="heading_bg">
+          <h1 className="heading_addnav">Quiz Name : {name}</h1>
+        </div>
+        <div className="heading_bg">
+          <h1 className="heading_addnav">Code: {code}</h1>
+        </div>
       </div>
     </div>
   );

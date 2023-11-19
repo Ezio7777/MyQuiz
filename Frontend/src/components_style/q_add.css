@@ -277,9 +277,25 @@
   margin-right: 50px;
   margin-top: 20px;
 }
+.pre_btn {
+  color: white;
+  background-color: red;
+  width: 130px;
+  height: 50px;
+  font-size: 1.7rem;
+  border-radius: 20px;
+  margin-right: 50px;
+  margin-top: 20px;
+}
 .add_btn:hover {
   background-color: rgb(0, 158, 0);
   color: white;
+  border: 2px solid white;
+}
+.pre_btn:hover {
+  background-color: rgb(255, 49, 49);
+  color: white;
+  border: 2px solid white;
 }
 
 /* ERROR */

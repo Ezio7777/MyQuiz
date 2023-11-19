@@ -38,6 +38,26 @@ function Q_add() {
   function inputHandel(e) {
     e.preventDefault();
   }
+  // //Pre Button
+
+  // const onPre = async () => {
+  //   if (qNo >= 2) {
+  //     setQno(qNo - 1);
+  //     setQuestion(data_store[qNo - 2].question);
+  //     setans1(data_store[qNo - 2].ans1);
+  //     setans2(data_store[qNo - 2].ans2);
+  //     setans3(data_store[qNo - 2].ans3);
+  //     setans4(data_store[qNo - 2].ans4);
+  //     setOption(data_store[qNo - 2].option);
+  //     console.log(qNo + "pre");
+  //   } else {
+  //     Swal.fire({
+  //       icon: "warning",
+  //       title: "There is no previous question",
+  //       text: "",
+  //     });
+  //   }
+  // };
 
   //ADD button
   const onAdd = async () => {
@@ -149,11 +169,6 @@ function Q_add() {
     }
   };
 
-  //Any value want to log in console
-  useEffect(() => {
-    console.log(qNo);
-  }, [qNo]);
-
   //Validation
 
   const onQuestionChange = (event) => {
@@ -202,6 +217,11 @@ function Q_add() {
     setans4(name);
   };
 
+  //Any value want to log in console
+  useEffect(() => {
+    console.log(data_store);
+    // console.log(qNo);
+  }, [data_store, qNo]);
   return (
     <>
       <Qnav />
@@ -369,17 +389,3 @@ function Q_add() {
 }
 
 export default Q_add;
-
-{
-  /* Changing Section
-<div className="chanaging_section">
-<div className="pre-next-cont">
-<div className="btn prev-btn">
-  <i class="fa-solid fa-chevron-left"></i> Prev
-</div>
-<div className="btn next-btn">
-  Next <i class="fa-solid fa-chevron-right"></i>
-</div>
-</div>
-</div> */
-}
