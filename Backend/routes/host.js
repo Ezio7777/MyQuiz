@@ -36,6 +36,8 @@ Router.post("/createquiz", fetchUser, async (req, res) => {
       no_of_question: req.body.no_of_question,
       duration: req.body.duration,
       quiz_id: counter.value,
+      participants: req.body.participants,
+      current_p: 0,
     };
 
     try {
@@ -66,28 +68,3 @@ Router.post("/createquiz", fetchUser, async (req, res) => {
 });
 
 module.exports = Router;
-
-{
-  /*
-//Unique no Generator (6-digit)
-async function generateUniqueNumber() {
-  let randomNum = Math.floor(100000 + Math.random() * 900000); // Generate a random 6-digit number
-
-  try {
-    //Checking that it already exist or not
-    const existingNumber = await teacher.findOne({ quiz_id: randomNum });
-    if (existingNumber) {
-      // If the number already exists, generate a new one recursively
-      return generateUniqueNumber();
-    } else {
-      // If the number is unique, return it
-      return randomNum;
-    }
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-}
-
-*/
-}

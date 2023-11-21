@@ -22,7 +22,7 @@ function Dashboard_host(props) {
       }
     );
     const json = await response.json();
-    if (json == null) {
+    if (json.candidate.length === 0 || json == null || json == undefined) {
       Swal.fire({
         icon: "warning",
         title: "Dont have enough data",

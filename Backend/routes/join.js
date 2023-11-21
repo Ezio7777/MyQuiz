@@ -8,29 +8,44 @@ const fetchUser = require("../middleware/fetchUserr");
 
 Router.get("/joinquiz/:id", fetchUser, async (req, res) => {
   try {
-    const existCheck = await DashBoard.findOne({
-      _id: req.user.id,
-      "join.quiz_id": req.params.id,
-    });
-    if (existCheck == null) {
-      const quiz = await Teacher.findOne({ quiz_id: req.params.id }).select([
-        "quiz_id",
-        "quiz_name",
-        "no_of_question",
-        "duration",
-        "questions",
-      ]);
-      const expiry = await Teacher.findOne({ quiz_id: req.params.id }).select(
-        "expiry"
-      );
-
-      if (expiry == true) {
-        res.json("expire");
-      } else {
-        res.json(quiz);
-      }
+    const candidate = await Teacher.findOne({
+      quiz_id: req.params.id,
+    }).select(["participants", "current_p"]);
+    if (candidate == null) {
+      res.json("WRONG");
     } else {
-      res.json("DONE");
+      if (candidate.participants != candidate.current_p) {
+        const existCheck = await DashBoard.findOne({
+          _id: req.user.id,
+          "join.quiz_id": req.params.id,
+        });
+        if (existCheck == null) {
+          const quiz = await Teacher.findOne({ quiz_id: req.params.id }).select(
+            ["quiz_id", "quiz_name", "no_of_question", "duration", "questions"]
+          );
+          const expiry = await Teacher.findOne({
+            quiz_id: req.params.id,
+          }).select("expiry");
+
+          if (expiry.expiry == true) {
+            res.json("expire");
+          } else {
+            await Teacher.updateOne(
+              { quiz_id: req.params.id },
+              { $inc: { current_p: 1 } }
+            );
+            await DashBoard.updateOne(
+              { "host.quiz_id": req.params.id },
+              { $inc: { current_p: 1 } }
+            );
+            res.json(quiz);
+          }
+        } else {
+          res.json("DONE");
+        }
+      } else {
+        res.json("FULL");
+      }
     }
   } catch (error) {
     console.error(error.message);

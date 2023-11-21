@@ -22,14 +22,18 @@ function Share_code() {
 
   const onStop = async () => {
     try {
-      const response = fetch("http://localhost:5000/api/unpublish/expire", {
-        method: "POST",
-        headers: {
-          "Conetent-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
-        },
-        body: JSON.stringify(code),
-      });
+      const response = await fetch(
+        "http://localhost:5000/api/unpublish/expire",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+
+          body: JSON.stringify({ quiz_id: code }),
+        }
+      );
       if (response) {
         Swal.fire({
           position: "center",

@@ -12,6 +12,7 @@ function Q_add() {
   const name = data.quizName;
   const no_of_q = data.noOfQuestion;
   const duration = data.duration;
+  const participants = data.participants;
 
   const navigate = useNavigate();
 
@@ -120,6 +121,7 @@ function Q_add() {
           duration: duration,
           questions: data_store,
           publish: true,
+          participants: participants,
         };
         const response = await fetch(
           "http://localhost:5000/api/host/createquiz",

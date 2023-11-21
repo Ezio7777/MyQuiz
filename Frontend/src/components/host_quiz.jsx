@@ -9,10 +9,12 @@ const Host_quiz = () => {
   const [quizName, setQuizName] = useState("");
   const [noOfQuestion, setNoOfQuestion] = useState("");
   const [timeDuration, setTimeDuration] = useState("");
+  const [participants, setParticipants] = useState("");
 
   const [errQuizName, setErrQuizName] = useState(false);
   const [errNoOfQuestion, setErrNoOfQuestion] = useState(false);
   const [errTimeDuration, setErrTimeDuration] = useState(false);
+  const [errParticipants, setErrParticipants] = useState(false);
 
   function createHnadel(e) {
     e.preventDefault();
@@ -51,6 +53,16 @@ const Host_quiz = () => {
     }
     setTimeDuration(d);
   };
+  const onParticipantsChange = (event) => {
+    let p = event.target.value;
+    // Use regex
+    if (/^(?:[1-9]|[1-9][0-9]|100)$/.test(p)) {
+      setErrParticipants(false);
+    } else {
+      setErrParticipants(true);
+    }
+    setParticipants(p);
+  };
 
   //create
 
@@ -60,7 +72,8 @@ const Host_quiz = () => {
     if (
       quizName.length < 4 ||
       !/^(1?[0-9]|20)$/.test(noOfQuestion) ||
-      !/^(?:[1-9]|10)$/.test(timeDuration)
+      !/^(?:[1-9]|10)$/.test(timeDuration) ||
+      !/^(?:[1-9]|[1-9][0-9]|100)$/.test(participants)
     ) {
       Swal.fire({
         icon: "warning",
@@ -73,6 +86,7 @@ const Host_quiz = () => {
           quizName: quizName,
           noOfQuestion: noOfQuestion,
           duration: timeDuration,
+          participants: participants,
         };
         Navigate("/question_add", { state: { data: data } });
       } catch (error) {
@@ -113,7 +127,7 @@ const Host_quiz = () => {
               value={noOfQuestion}
               onChange={onQuestionNoChange}
             />
-            <label className="Quizz_Name_font">No of questions (1 - 20)</label>
+            <label className="Quizz_Name_font">No of Questions (1 - 20)</label>
           </div>
           <div className="invalidInputs_injoin">
             {errNoOfQuestion ? (
@@ -141,6 +155,28 @@ const Host_quiz = () => {
             {errTimeDuration ? (
               <p className="error_join error_name">
                 <i class="fa-solid fa-exclamation"></i> Enter between (1 - 10)
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="user-box">
+            <input
+              type="text"
+              name=""
+              required=""
+              placeholder="0"
+              value={participants}
+              onChange={onParticipantsChange}
+            />
+            <label className="Quizz_Name_font">
+              Total Participants (1 - 100)
+            </label>
+          </div>
+          <div className="invalidInputs_injoin">
+            {errParticipants ? (
+              <p className="error_join error_name">
+                <i class="fa-solid fa-exclamation"></i> Enter between (1 - 100)
               </p>
             ) : (
               ""

@@ -8,18 +8,22 @@ const fetchUser = require("../middleware/fetchUserr");
 // ROUTE 1: Create a Quiz using:POST "/api/submit/result".
 Router.post("/result", fetchUser, async (req, res) => {
   try {
-    const dashboardId = req.body.user_id;
     const newJoin = {
       ...req.body,
     };
-    const id = req.user.id;
-
-    let id_check = await dashboard.findById(id);
+    const id_check = await dashboard.findById(req.user.id);
 
     if (id_check == null) {
-      await dashboard.create({ _id: id }, { join: [newJoin] }, { host: [] });
+      await dashboard.create(
+        { _id: req.user.id },
+        { join: [newJoin] },
+        { host: [] }
+      );
     } else {
-      await dashboard.updateOne({ _id: id }, { $push: { join: newJoin } });
+      await dashboard.updateOne(
+        { _id: req.user.id },
+        { $push: { join: newJoin } }
+      );
     }
 
     //LeaderBoard
@@ -43,7 +47,7 @@ Router.post("/result", fetchUser, async (req, res) => {
       console.log("not save");
     }
 
-    res.json({ id });
+    res.json("good");
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal server error");

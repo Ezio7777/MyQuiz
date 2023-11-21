@@ -70,6 +70,18 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
           title: "Quiz Expired",
           text: "",
         });
+      } else if (json == "FULL") {
+        Swal.fire({
+          icon: "warning",
+          title: "Seat Full",
+          text: "",
+        });
+      } else if (json == "WRONG") {
+        Swal.fire({
+          icon: "warning",
+          title: "Check The Code",
+          text: "",
+        });
       } else {
         navigate(`./q_show`, { state: { data: json, name: displayName } });
       }

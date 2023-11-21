@@ -12,7 +12,11 @@ Router.post("/expire", fetchUser, async (req, res) => {
         { quiz_id: req.body.quiz_id },
         { expiry: true }
       );
-      res.json(response);
+      if (response) {
+        res.json(response);
+      } else {
+        console.log("not Expired");
+      }
     }
   } catch (error) {
     console.log(error);

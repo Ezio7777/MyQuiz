@@ -1,13 +1,14 @@
 import React from "react";
 import "../components_style/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Navbar() {
   const navigate = useNavigate();
   const onLogOut = () => {
     localStorage.removeItem("token");
-    window.location.reload();
     navigate("/");
+    window.location.reload();
   };
 
   const onDashboard = async () => {
@@ -20,7 +21,15 @@ function Navbar() {
         },
       });
       const json = await response.json();
-      navigate("/dashboard", { state: { data: json } });
+      if (json == null) {
+        Swal.fire({
+          icon: "warning",
+          title: "Not Enough Data",
+          text: "",
+        });
+      } else {
+        navigate("/dashboard", { state: { data: json } });
+      }
     } catch (error) {
       console.log(error);
     }

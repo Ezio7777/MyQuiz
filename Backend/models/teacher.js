@@ -41,6 +41,15 @@ const TeacherSchema = new Schema({
     type: Boolean,
     required: true,
   },
+  participants: {
+    type: Number,
+    default: 100,
+    required: true,
+  },
+  current_p: {
+    type: Number,
+    default: 0,
+  },
 });
 const Teacher = mongoose.model("teacher", TeacherSchema);
 module.exports = Teacher;
