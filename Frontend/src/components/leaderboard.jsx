@@ -6,11 +6,18 @@ import Body from "./leaderboard_body";
 const Leaderboard = () => {
   const location = useLocation();
   const candidate = location.state.data.candidate;
+  const participants = location.state.participants;
+  const current = candidate.length;
 
   return (
     <>
       <div className="leaderboard_body">
         <div class="h1_text">LeaderBoard</div>
+        <div className="participants_l_body">
+          <div className="participants_l">
+            Participants: {current}/{participants}
+          </div>
+        </div>
         <div className="container aboutbody">
           <div class="head_board">
             <div className="board">

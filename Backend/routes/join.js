@@ -4,7 +4,7 @@ const Teacher = require("../models/teacher");
 const DashBoard = require("../models/dashboard");
 const fetchUser = require("../middleware/fetchUserr");
 
-// ROUTE 1: Join a Quiz using:POST "/api/join/joinquiz".
+// ROUTE 1: "/api/join/joinquiz".
 
 Router.get("/joinquiz/:id", fetchUser, async (req, res) => {
   try {
@@ -21,7 +21,14 @@ Router.get("/joinquiz/:id", fetchUser, async (req, res) => {
         });
         if (existCheck == null) {
           const quiz = await Teacher.findOne({ quiz_id: req.params.id }).select(
-            ["quiz_id", "quiz_name", "no_of_question", "duration", "questions"]
+            [
+              "quiz_id",
+              "quiz_name",
+              "no_of_question",
+              "duration",
+              "questions",
+              "creator_id",
+            ]
           );
           const expiry = await Teacher.findOne({
             quiz_id: req.params.id,
@@ -35,7 +42,7 @@ Router.get("/joinquiz/:id", fetchUser, async (req, res) => {
               { $inc: { current_p: 1 } }
             );
             await DashBoard.updateOne(
-              { "host.quiz_id": req.params.id },
+              { _id: quiz.creator_id, "host.quiz_id": req.params.id },
               { $inc: { current_p: 1 } }
             );
             res.json(quiz);

@@ -19,6 +19,21 @@
   font-weight: 800;
   color: white;
 }
+/* participants_l */
+.participants_l_body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: transparent;
+  backdrop-filter: blur(30px);
+  margin-bottom: 20px;
+}
+
+.participants_l {
+  color: white;
+  font-size: 2rem;
+}
 
 /* flexbox table */
 .flex_board {
@@ -131,5 +146,12 @@
     line-height: 7rem;
     font-weight: 800;
     color: white;
+  }
+}
+
+@media (max-width: 768px) {
+  .participants_l {
+    color: white;
+    font-size: 1.5rem;
   }
 }

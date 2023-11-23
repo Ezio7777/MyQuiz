@@ -14,11 +14,11 @@ Router.post("/result", fetchUser, async (req, res) => {
     const id_check = await dashboard.findById(req.user.id);
 
     if (id_check == null) {
-      await dashboard.create(
-        { _id: req.user.id },
-        { join: [newJoin] },
-        { host: [] }
-      );
+      await dashboard.create({
+        _id: req.user.id,
+        join: [newJoin],
+        host: [],
+      });
     } else {
       await dashboard.updateOne(
         { _id: req.user.id },

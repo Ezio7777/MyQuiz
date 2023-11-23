@@ -42,7 +42,7 @@ Router.post("/createquiz", fetchUser, async (req, res) => {
 
     try {
       if (id_check == null) {
-        await dashboard.create({ _id: id }, { join: [] }, { host: [newHost] });
+        await dashboard.create({ _id: id, join: [], host: [newHost] });
       } else {
         await dashboard.updateOne({ _id: id }, { $push: { host: newHost } });
       }
