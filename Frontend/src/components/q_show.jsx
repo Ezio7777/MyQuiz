@@ -74,7 +74,7 @@ function Q_show() {
     // }
 
     const wrong = n - point;
-    const acc = (point / n) * 100;
+    const acc = Math.round((point / n) * 100);
 
     const data2 = {
       name: name,

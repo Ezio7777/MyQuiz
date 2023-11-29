@@ -30,7 +30,7 @@ const Login = ({ loadUser, onRouteChange }) => {
     if (json.success) {
       localStorage.setItem("token", json.authtoken);
       handleClick();
-    } else {
+    } else if (json === "Invalid") {
       Swal.fire({
         icon: "warning",
         title: "Invalid Credentials",

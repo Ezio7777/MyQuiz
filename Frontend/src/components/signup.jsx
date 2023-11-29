@@ -36,6 +36,12 @@ const Signup = ({ loadUser, onRouteChange }) => {
     if (json.success) {
       localStorage.setItem("token", json.authtoken);
       handleClick();
+    } else if (json === "Exist") {
+      Swal.fire({
+        icon: "warning",
+        title: "User ALready Exist",
+        text: "",
+      });
     } else {
       Swal.fire({
         icon: "warning",

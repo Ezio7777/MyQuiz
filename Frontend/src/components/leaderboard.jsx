@@ -5,7 +5,12 @@ import Body from "./leaderboard_body";
 
 const Leaderboard = () => {
   const location = useLocation();
-  const candidate = location.state.data.candidate;
+  const unsort_candidate = location.state.data.candidate;
+
+  //Sort Candidate basis on Points
+  const candidate = unsort_candidate.sort((a, b) => b.correct - a.correct);
+  console.log(candidate);
+
   const participants = location.state.participants;
   const current = candidate.length;
 
