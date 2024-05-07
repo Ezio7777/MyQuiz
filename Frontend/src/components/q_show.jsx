@@ -86,7 +86,7 @@ function Q_show() {
       accuracy: acc,
     };
 
-    const response = await fetch("http://localhost:5000/api/submit/result", {
+    const response = await fetch("http://localhost:4000/api/submit/result", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -13,7 +13,7 @@ function Navbar() {
 
   const onDashboard = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/dashboard/show`, {
+      const response = await fetch(`http://localhost:4000/api/dashboard/show`, {
         method: "get",
         headers: {
           "Content-Type": "application/json",

@@ -42,7 +42,7 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
   const onSubmitJoin = async () => {
     if (displayName.length > 3 && !/^\d{6,6}$/.test(JoinCode)) {
       const response = await fetch(
-        `http://localhost:5000/api/join/joinquiz/${joinCode}`,
+        `http://localhost:4000/api/join/joinquiz/${joinCode}`,
         {
           method: "GET",
           headers: {

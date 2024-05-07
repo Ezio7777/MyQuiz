@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
-const mongoURI = "mongodb://0.0.0.0:27017/quiz";
+const dotenv = require("dotenv");
+dotenv.config({ path: "./.env" });
+
+const mongoURI = `${process.env.MONGO_DB_URL}`;
 
 const connectToMongo = () => {
   mongoose.connect(mongoURI).then(console.log("connected with mongoose"));

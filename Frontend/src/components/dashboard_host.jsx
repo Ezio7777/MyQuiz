@@ -14,7 +14,7 @@ function Dashboard_host(props) {
   const onLeaderboard = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/leaderboard/show/${code}`,
+        `http://localhost:4000/api/leaderboard/show/${code}`,
         {
           method: "GET",
           headers: {

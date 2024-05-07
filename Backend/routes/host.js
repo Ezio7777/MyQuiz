@@ -7,20 +7,22 @@ const dashboard = require("../models/dashboard");
 const leaderboard = require("../models/leaderboard");
 
 // ROUTE 1: Create a Quiz using:POST "/api/host/createquiz".
+function generateRandomCode() {
+  // Generate a random number between 0 and 999999
+  let randomNumber = Math.floor(Math.random() * 1000000);
+
+  // Convert the number to a string and pad it with leading zeros to ensure it is 6 digits long
+  let randomCode = randomNumber.toString().padStart(6, "0");
+
+  return randomCode;
+}
 Router.post("/createquiz", fetchUser, async (req, res) => {
   try {
-    await QuizCounter.updateOne(
-      { _id: "6547ba752a935f3835211124" },
-      {
-        $inc: { value: 1 },
-        $currentDate: { lastModified: true },
-      }
-    );
-    let counter = await QuizCounter.findById("6547ba752a935f3835211124");
-    const quiz_id = counter.value;
+    const quiz_id = generateRandomCode();
+    console.log(quiz_id);
     const quizObj = {
       ...req.body,
-      quiz_id: counter.value,
+      quiz_id: quiz_id,
       creator_id: req.user.id,
     };
     quiz = await teacher.create(quizObj);
@@ -35,7 +37,7 @@ Router.post("/createquiz", fetchUser, async (req, res) => {
       quiz_name: req.body.quiz_name,
       no_of_question: req.body.no_of_question,
       duration: req.body.duration,
-      quiz_id: counter.value,
+      quiz_id: quiz_id,
       participants: req.body.participants,
       current_p: 0,
     };
@@ -54,7 +56,7 @@ Router.post("/createquiz", fetchUser, async (req, res) => {
     try {
       await leaderboard.create({
         creater_id: id,
-        quiz_id: counter.value,
+        quiz_id: quiz_id,
         quiz_name: req.body.quiz_name,
         candidate: [],
       });
