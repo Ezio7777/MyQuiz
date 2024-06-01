@@ -21,7 +21,7 @@ function Navbar() {
         },
       });
       const json = await response.json();
-      if (json == null) {
+      if (json == null || json == undefined) {
         Swal.fire({
           icon: "warning",
           title: "Not Enough Data",

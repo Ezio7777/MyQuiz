@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import "../components_style/dashboard.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Host from "./dashboard_host";
 import Join from "./dashboard_join";
-
+import Swal from "sweetalert2";
 const Dashboard = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const data = location.state.data;
+  if (data == null || data == undefined) {
+    Swal.fire({
+      icon: "warning",
+      title: "Not Enough Data",
+      text: "",
+    });
+    navigate("/");
+  }
 
   const join = data.join;
   const host = data.host;

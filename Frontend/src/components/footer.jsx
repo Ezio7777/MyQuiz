@@ -12,7 +12,7 @@ const footer = () => {
           <i className="fa-brands fa-twitter f-icon" ></i>
           <i className="fa-brands fa-facebook f-icon" ></i>
         </div> */}
-      <p>© Copyright {currentYear} beQuick</p>
+      <p>© Copyright {currentYear} MyQuiz</p>
     </footer>
   );
 };
