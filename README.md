@@ -1,9 +1,9 @@
 # MyQuiz
 
-<h3>A Minimalistic Quiz App Made With MERN-Stack, We Primarily Have Two roles: Teacher & Student</h3>
+A Minimalistic Quiz App Made With MERN-Stack, We Primarily Have Two roles: Teacher & Student.
 
 
-HOME PAGE
+
 
 <img width="1280" alt="Screenshot 2024-06-01 at 5 21 44 PM" src="https://github.com/Ezio7777/MyQuiz/assets/111626550/d8d2931b-4a15-4525-92c3-ee0bd2f131d5">
 
