@@ -3,7 +3,7 @@ import "../components_style/signup.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import Key from "../Key/key";
+import BASE_URL from "../Server/base_url";
 
 const Signup = ({ loadUser, onRouteChange }) => {
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ const Signup = ({ loadUser, onRouteChange }) => {
     navigate("/");
   };
   const onSubmitSignUp = async () => {
-    const response = await fetch(Key.signup, {
+    const response = await fetch(`${BASE_URL}/api/auth/createuser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

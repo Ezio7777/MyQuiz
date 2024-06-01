@@ -4,6 +4,7 @@ import "../components_style/join_code.css";
 import Swal from "sweetalert2";
 // import { useNavigation } from "@react-navigation/native";
 // import QShow from "./q_show";
+import BASE_URL from "../Server/base_url";
 
 const JoinCode = ({ loadUser, onRouteChange }) => {
   // let token = localStorage.getItem("token");
@@ -42,7 +43,7 @@ const JoinCode = ({ loadUser, onRouteChange }) => {
   const onSubmitJoin = async () => {
     if (displayName.length > 3 && !/^\d{6,6}$/.test(JoinCode)) {
       const response = await fetch(
-        `http://localhost:4000/api/join/joinquiz/${joinCode}`,
+        `${BASE_URL}/api/join/joinquiz/${joinCode}`,
         {
           method: "GET",
           headers: {

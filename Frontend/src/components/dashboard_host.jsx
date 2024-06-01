@@ -2,6 +2,7 @@ import React from "react";
 import "../components_style/dashboard.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import BASE_URL from "../Server/base_url";
 
 function Dashboard_host(props) {
   const data = props.data;
@@ -13,16 +14,13 @@ function Dashboard_host(props) {
 
   const onLeaderboard = async () => {
     try {
-      const response = await fetch(
-        `http://localhost:4000/api/leaderboard/show/${code}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/leaderboard/show/${code}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+      });
       const json = await response.json();
       if (json.candidate.length === 0 || json == null || json == undefined) {
         Swal.fire({

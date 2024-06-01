@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../components_style/host_quiz.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import BASE_URL from "../Server/base_url";
 
 const Host_quiz = () => {
   // let token = localStorage.getItem("token");

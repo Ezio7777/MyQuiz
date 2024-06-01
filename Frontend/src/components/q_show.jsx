@@ -4,6 +4,7 @@ import "../components_style/q_show.css";
 import "react-router-dom";
 import NavbarTimer from "./q_show_nav";
 import Swal from "sweetalert2";
+import BASE_URL from "../Server/base_url";
 
 function Q_show() {
   const location = useLocation();
@@ -86,7 +87,7 @@ function Q_show() {
       accuracy: acc,
     };
 
-    const response = await fetch("http://localhost:4000/api/submit/result", {
+    const response = await fetch(`${BASE_URL}/api/submit/result`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

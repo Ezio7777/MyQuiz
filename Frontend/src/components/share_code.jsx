@@ -2,6 +2,7 @@ import React from "react";
 import "../components_style/share_code.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import BASE_URL from "../Server/base_url";
 
 function Share_code() {
   const location = useLocation();
@@ -22,18 +23,15 @@ function Share_code() {
 
   const onStop = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:4000/api/unpublish/expire",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": localStorage.getItem("token"),
-          },
+      const response = await fetch(`${BASE_URL}/api/unpublish/expire`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
 
-          body: JSON.stringify({ quiz_id: code }),
-        }
-      );
+        body: JSON.stringify({ quiz_id: code }),
+      });
       if (response) {
         Swal.fire({
           position: "center",

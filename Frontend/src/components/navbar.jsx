@@ -2,6 +2,7 @@ import React from "react";
 import "../components_style/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import BASE_URL from "../Server/base_url";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function Navbar() {
 
   const onDashboard = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/dashboard/show`, {
+      const response = await fetch(`${BASE_URL}/api/dashboard/show`, {
         method: "get",
         headers: {
           "Content-Type": "application/json",

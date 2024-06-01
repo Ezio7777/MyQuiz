@@ -4,6 +4,7 @@ import "../components_style/q_add.css";
 import Qnav from "./q_add_nav";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import BASE_URL from "../Server/base_url";
 
 function Q_add() {
   const location = useLocation();
@@ -123,18 +124,15 @@ function Q_add() {
           publish: true,
           participants: participants,
         };
-        const response = await fetch(
-          "http://localhost:4000/api/host/createquiz",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": localStorage.getItem("token"),
-            },
+        const response = await fetch(`${BASE_URL}/api/host/createquiz`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
 
-            body: JSON.stringify(data),
-          }
-        );
+          body: JSON.stringify(data),
+        });
 
         // Handle the response data as needed
         const json = await response.json();

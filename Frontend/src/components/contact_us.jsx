@@ -38,17 +38,17 @@ const Contact_us = () => {
     <div className="container contact_us_body">
       {/* icons */}
       <div class="footer-icons">
-        <a href="https://github.com/Ezio7777/Be-Quick__">
+        <a href="https://github.com/Ezio7777/MyQuiz">
           <i class="fab fa-github"></i>
         </a>
 
-        <a href="https://www.instagram.com/soumyaa__22">
+        <a href="https://www.instagram.com/sunitxg_007">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://www.linkedin.com/in/soumya-gupta-522a02237">
+        <a href="https://www.linkedin.com/in/sunit-pal-1a792824a/">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="https://www.facebook.com/">
+        <a href="https://www.facebook.com/Sunit Pal">
           <i class="fab fa-facebook"></i>
         </a>
       </div>
